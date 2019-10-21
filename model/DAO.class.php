@@ -13,9 +13,6 @@
 
         // Constructeur chargé d'ouvrir la BD
         function __construct() {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
             try {
               $this->db = new PDO($database);
             }
@@ -28,9 +25,6 @@
         // Accès à toutes les catégories
         // Retourne une table d'objets de type Categorie
         function getAllCat() : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////////////
             $query = "SELECT * FROM categorie";
             $statement = $this->db->query($query);
             $categories = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
@@ -43,9 +37,6 @@
         // Cette méthode retourne un tableau contenant les n permier articles de
         // la base sous la forme d'objets de la classe Article.
         function firstN(int $n) : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
             $req = "SELECT * FROM article LIMIT $n";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
@@ -56,9 +47,6 @@
         // Cette méthode retourne un tableau contenant n  articles de
         // la base sous la forme d'objets de la classe Article.
         function getN(int $ref,int $n) : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
             $req = "SELECT * FROM article WHERE ref >= $ref LIMIT $n";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
@@ -68,9 +56,6 @@
         // Acces à la référence qui suit la référence $ref dans l'ordre des références
         // Retourne -1 si $ref est la dernière référence
         function next(int $ref) : int {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
             $liste = $this->getN($ref, 2);
             if ($liste[1] != null) {
               return $liste[1]->getRef();
@@ -83,9 +68,6 @@
         // Acces aux n articles qui précèdent de $n la référence $ref dans l'ordre des références
         // Retourne -1 si $ref est la première référence
         function prevN(int $ref,int $n): int {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
             $req = "SELECT * FROM article WHERE ref < $ref ORDER BY ref DESC LIMIT $n";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
@@ -99,9 +81,6 @@
         // Acces à une catégorie
         // Retourne un objet de la classe Categorie connaissant son identifiant
         function getCat(int $id): Categorie {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////////////
             $req = "SELECT * FROM categorie WHERE id = $id";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
@@ -111,15 +90,20 @@
         // Acces au n articles à partir de la reférence $ref
         // Retourne une table d'objets de la classe Article
         function getNCateg(int $ref,int $n,string $categorie) : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER Q 5.2
-            ///////////////////////////////////////////////////////
             $req = "SELECT * FROM article WHERE categorie = $categorie AND ref >= $ref LIMIT $n";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
             return $liste;
         }
 
+        //Vérifie que le nom rentré existe
+        //Vrai s'il existe
+        function verifNomExistant(string $nom) : boolean {
+          $req = "SELECT * FROM utilisateur WHERE nom=$nom limit 1";
+          $statement = $this->db->query($req);
+          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          return count($liste)==1;
+        }
     }
 
     ?>

@@ -3,18 +3,19 @@
     // Un article en vente
     class Article {
         private $ref;       // Référence unique
-        private $libelle;   // Nom de l'article
+        private $libelCours;   //  Intitulé cours
         private $categorie; // identifiant de catégorie
         private $prix;      // le prix
         private $image;     // Nom du fichier image
+        private $description: //Description
 
         // Getters
         function getRef() : int {
           return $this->ref;
         }
 
-        function getLibelle() : string {
-          return $this->libelle;
+        function getLibelCours() : string {
+          return $this->intituleCours;
         }
 
         function getCategorie() : string {
@@ -29,6 +30,9 @@
           return $this->image;
         }
 
+        function getDescription() : string {
+          return $this->description;
+        }
 
     }
 
