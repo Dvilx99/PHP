@@ -7,7 +7,7 @@
         private $categorie; // identifiant de catégorie
         private $prix;      // le prix
         private $image;     // Nom du fichier image
-        private $description: //Description
+        private $description; //Description
 
         // Getters
         function getRef() : int {

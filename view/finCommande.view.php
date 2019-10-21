@@ -12,8 +12,10 @@
         <h1>La FNOC</h1>
       </header>
 
+      <p>Vous êtes sur le point d'acheter cet article :</p>
       <?php
-
+        echo $article->getLibelCours();
+        echo $article->getImage();
       ?>
 
       <footer>
