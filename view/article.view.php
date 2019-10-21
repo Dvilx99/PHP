@@ -9,7 +9,7 @@
 
     <body>
       <header>
-        <h1>La FNOC</h1>
+        <h1>la FNOC</h1>
       </header>
 
       <?php
