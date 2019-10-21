@@ -19,11 +19,14 @@
         }
 
         function getPath() : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////////////
-
-           return array();
+          $dao = new DAO();
+          $tab = array();
+          $i = $this->getId();
+          while ($id>1){
+            array_unshift($tab,$dao->get($id));
+            $id--;
+          }
+           return $tab;
     }
   }
 
