@@ -22,9 +22,12 @@
           $dao = new DAO();
           $tab = array();
           $i = $this->getId();
-          while ($id>1){
-            array_unshift($tab,$dao->get($id));
-            $id--;
+          $idPere = $this->getPere();
+          while ($id!=$idPere){
+            $courant = $dao->get($id);
+            array_unshift($tab,$courant);
+            $id = $courant->getId();
+            $idPere = $courant->getPere();
           }
            return $tab;
     }

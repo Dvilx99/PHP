@@ -13,7 +13,6 @@
         function getRef() : int {
           return $this->ref;
         }
-
         function getLibelCours() : string {
           return $this->intituleCours;
         }
