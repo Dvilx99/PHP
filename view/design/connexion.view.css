@@ -1,0 +1,39 @@
+/*définition des variables dans :root*/
+:root{
+ --taille_logo: 225px;
+}
+
+/*-------Taille ordinateur-------*/
+  body{
+    margin:auto;
+    width: 50%;
+  }
+
+  /*---header---*/
+  header{
+    text-align: center;
+  }
+  header img{
+    width: var(--taille_logo);
+    height: var(--taille_logo);
+    margin-bottom: calc(var(--taille_logo)/10);
+  }
+
+  /*---fieldset---*/
+  fieldset{
+    text-align: center;
+    border:2px solid black;
+    padding: 10px;
+  }
+
+  h2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    background-color: #DFAF2C;
+    color: white;
+  }
+
+  .input-group-text{
+    width: 120px;
+  }

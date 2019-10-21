@@ -1,4 +1,4 @@
-body {
+/*body {
 	font-family: "Arial";
 	width: 960px;
 	margin: auto;
@@ -16,7 +16,7 @@ header {
 /**************************************************************
 * Adapte la taille de l'image dans le header
 **************************************************************/
-header img {
+/*header img {
 	width: 90%;
 }
 
