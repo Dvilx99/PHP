@@ -15,7 +15,7 @@
       <p>Vous êtes sur le point d'acheter cet article :</p>
       <?php
         echo $article->getLibelCours();
-        echo $article->getImage();
+        echo '<img src="/design/imagesArticles/'.$article->getImage().'">';
       ?>
 
       <footer>

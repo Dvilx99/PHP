@@ -110,6 +110,7 @@
           $req = "SELECT * FROM article WHERE ref = $ref";
           $statement = $this->db->query($req);
           $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          var_dump($liste);
           return $liste[0];
         }
 
