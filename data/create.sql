@@ -4,6 +4,7 @@ CREATE TABLE article (
 	categorie INTEGER,
 	prix REAL,
 	image TEXT,
+	description TEXT,
 	FOREIGN KEY(categorie) REFERENCES categorie(id)
 );
 
