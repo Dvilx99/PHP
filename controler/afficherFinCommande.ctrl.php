@@ -14,6 +14,10 @@
     $ref = $_GET['ref'];
     $article = $dao->getArticle($ref);
 
-    include('../view/finCommande.view.php');
+    $view = new View();
 
-    ?>
+    $view->assign('article', $article);
+    
+    $view->display("finCommande.view.php");
+
+?>
