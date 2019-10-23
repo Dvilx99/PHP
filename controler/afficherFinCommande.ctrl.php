@@ -7,17 +7,15 @@
 
     // Creation de l'unique objet DAO
     $dao = new DAO();
+    $view = new View();
 
     ///////////////////////////////////////////////////////////
     // Actions à faire concernant la DAO
     ///////////////////////////////////////////////////////////
-    $ref = $_GET['ref'];
-    $article = $dao->getArticle($ref);
+    $panier = $dao->getPanier();
 
-    $view = new View();
+    $view->assign('panier', $panier);
 
-    $view->assign('article', $article);
-    
     $view->display("finCommande.view.php");
 
 ?>

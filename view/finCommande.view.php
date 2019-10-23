@@ -12,11 +12,22 @@
         <h1>La FNOC</h1>
       </header>
 
-      <p>Vous êtes sur le point d'acheter cet article :</p>
+      <p>Vous êtes sur le point d'acheter ces articles :</p>
+
       <?php
-        echo $article->getLibelCours();
-        echo '<img src="/design/imagesArticles/'.$article->getImage().'">';
+        $prixFinal = 0;
+        foreach ($panier as $key => $value):
       ?>
+      <article class="">
+          <h2><?=$value->getLibelCours()?></h2>
+          <img src="../view/design/imagesArticles/<?=$value->getImage()?>" alt="">
+          <h2> article : <?=$value->getPrix()?>€</h2>
+      </article>
+      <?php
+        $prixFinal += $value->getPrix();
+        endforeach;
+      ?>
+      <p>Total : <?= $prixFinal ?></p>
 
       <footer>
 
