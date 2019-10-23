@@ -6,6 +6,7 @@
         private $prenom;
         private $email;
         private $mdp;
+        private $monPanier;
         //Getters
         function getNom() : string{
           return $this->nom;
@@ -21,6 +22,9 @@
         }
         function getMdp() : string {
           return $this->mdp;
+        }
+        function getMonPanier() : array {
+          return $this->monPanier;
         }
     }
 

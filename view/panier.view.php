@@ -9,13 +9,20 @@
 
     <body>
       <header>
-        <h1>La FNOC</h1>
+        <h1>Votre panier</h1>
       </header>
-
+      <form class="" action="../controler/afficherFinCommande.ctrl.php" method="post">
       <?php
-
+      foreach($monPanier as $article){
+        echo'<article class="">';
+        echo'<h2>'.$article->getLibelCours().'</h2>';
+        echo'<img src="../view/design/'.$article->getImage().'" alt="">';
+        echo '<p>'.$article->getPrix().'€</p>';
+        echo'</article>';
+      }
       ?>
-
+      <p><button type="submit" class="btn btn-dark">Procéder au paiement</button></p>
+      </form>
       <footer>
 
       </footer>
