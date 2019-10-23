@@ -14,14 +14,18 @@
     //  Création qui concerne la DAO
     ///////////////////////////////////////////////
 
+    $categorie = $_GET['categorie'];
+    $liste = $dao->getArticlesParCategorie($categorie);
+
     ////////////////////////////////////////////////////////////////////////////
     // Construction de la vue
     ////////////////////////////////////////////////////////////////////////////
     $view = new View();
 
     // Passe les paramètres à la vue
-    
 
+    $view->assign('liste', $liste);
+    
     // Charge la vue
-    $view->display("articles.view.php")
+    $view->display("listeArticles.view.php")
     ?>
