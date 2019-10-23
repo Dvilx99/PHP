@@ -1,0 +1,8 @@
+1|Ballon de rugby R500 taille 5 bleu|2|15.00|1.png|Notre équipe a conçu ce ballon de rugby pour jouer à l'entraînement comme en match
+2|Tee rugby R100 jaune|2|5.00|2.png|Nous avons développé ce tee pour buter, à l'entraînement comme en compétition
+3|Maillot de rugby R500 Femme Prune Marine|4|10.00|3.png|Nos passionné(es) de Rugby ont développé pour vous ce maillot avec un taillant féminin, pour vous accompagner lors de vos entraînements (2/3 fois par semaine)
+4|Coupe vent imperméable Smocktop pluie de rugby R500 adulte noir|4|25.00|4.png|Nos équipes ont développé ce coupe vent d'entrainement imperméable pour jouer par temps de pluie et par temps froid. Même l'hiver, restez sur le terrain !
+5|Short rugby adulte avec poches R100 noir|5|9.00|5.png|Nos équipes de passionnés ont conçu de short de rugby pour jouer au rugby 1 à 2 fois par semaine.
+6|Chaussure de rugby terrains secs Density 300 FG noir rouge blanc|6|20.00|6.png|Nos concepteurs rugbymen ont développé ces chaussures pour les joueurs recherchant confort, accroche et résistance, 1 à 2 fois par semaine sur terrains secs.
+7|Chaussure de rugby terrains gras 8 crampons Kakari SG Bleu orange|6|70.00|7.png|Nous avons sélectionnée cette chaussure de rugby Adidas, développée pour jouer sur terrain gras, et conçue pour la mêlée et les avants.
+8|Chaussure de rugby terrains secs Skill R500 FG kaki jaune|6|35.00|8.png|Notre équipe de passionnés de rugby a conçu cette chaussure Skill 500 polyvalente pour jouer sur terrains secs jusqu'à 3 fois par semaine.
