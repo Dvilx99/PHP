@@ -1,7 +1,8 @@
 <?php
-include('../framework/view.class.php');
-include('../model/DAO.class.php');
-  $dao-> new DAO();
+require_once('../framework/view.class.php');
+require_once('../model/DAO.class.php');
+
+  $dao = new DAO();
   $vue = new View();
   $ref;
 
@@ -18,3 +19,4 @@ include('../model/DAO.class.php');
 
 
   $vue->assign('articles',$articles);
+  $vue->display('../view/accueil.view.php');

@@ -14,7 +14,7 @@
         // Constructeur chargé d'ouvrir la BD
         function __construct() {
             try {
-              $this->db = new PDO($database);
+              $this->db = new PDO($this->database);
             }
             catch (PDOException $e){
               die("erreur de connexion:".$e->getMessage());
@@ -112,7 +112,7 @@
           $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
           return $liste[0];
         }
-        
+
     }
 
     ?>
