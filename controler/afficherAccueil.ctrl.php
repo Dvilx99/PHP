@@ -6,7 +6,7 @@ require_once('../model/DAO.class.php');
   $vue = new View();
   $ref;
 
-    $nbArticle = 1;
+    $nbArticle = 4;
     $articles =array() ;
     if (isset($_GET['ref'])){
       $ref = $_GET['ref'];
