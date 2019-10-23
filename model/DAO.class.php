@@ -104,6 +104,15 @@
           $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
           return count($liste)==1;
         }
+
+
+        function getArticle(int $ref) : Article {
+          $req = "SELECT * FROM article WHERE ref = $ref";
+          $statement = $this->db->query($req);
+          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          return $liste[0];
+        }
+        
     }
 
     ?>
