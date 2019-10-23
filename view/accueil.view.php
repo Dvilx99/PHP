@@ -15,7 +15,7 @@
       <?php foreach ($articles as $key => $value): ?>
         <article class="">
             <h2><?=$value->getLibelCours()?></h2>
-            <img src="../view/design/imagesArticles/<?=$value->getImage()?>" alt="">
+            <a href="../controler/afficherArticle.ctrl.php?ref=<?=$value->getRef()?>"><img src="<?=$config['images_path'].$value->getImage()?>" alt=""></a>
             <h2> article : <?=$value->getPrix()?>€</h2>
     </article>
  <?php endforeach; ?>

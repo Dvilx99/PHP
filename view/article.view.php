@@ -11,11 +11,16 @@
       <header>
         <h1>la FNOC</h1>
       </header>
-
-      <?php
-
-      ?>
-
+      <div class="">
+        <img src="<?=$config['images_path']?><?=$article->getImage()?>" alt="">
+      </div>
+      <div class="">
+        <p>ref : <?=$article->getRef()?></p>
+        <h2><?=$article->getLibelCours()?></h2>
+        <p><?=$article->getPrix()?></p>
+        <p><?=$article->getDescription()?></p>
+        <input type="button" value="Ajouter au panier">
+      </div>
       <footer>
 
       </footer>
