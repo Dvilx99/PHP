@@ -114,6 +114,13 @@
           return $liste[0];
         }
 
+        function getArticlesParCategorie(int $categorie) : array {
+          $req = "SELECT * FROM article WHERE categorie = $categorie";
+          $statement = $this->db->query($req);
+          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          return $liste;
+        }
+
         function getSousCategorie(Categorie $pere) : array{
           $req = "SELECT * FROM categorie WHERE pere=$pere";
           $statement = $this->db->query($req);
@@ -136,7 +143,7 @@
             return 1;
           }
         }
-        
+
     }
 
     ?>
