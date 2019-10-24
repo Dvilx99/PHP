@@ -12,9 +12,13 @@
         <h1>La FNOC</h1>
       </header>
 
-      <?php
-
-      ?>
+      <?php foreach ($liste as $key => $value): ?>
+        <article class="">
+            <h2><?=$value->getLibelCours()?></h2>
+            <a href="../controler/afficherArticle.ctrl.php?ref=<?=$value->getRef()?>"><img src="<?=$config['images_path'].$value->getImage()?>" alt=""></a>
+            <h2> article : <?=$value->getPrix()?>€</h2>
+        </article>
+      <?php endforeach; ?>
 
       <footer>
 
