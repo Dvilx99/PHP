@@ -1,13 +1,3 @@
-<html>
-  <head>
-      <title>FNOC - Connexion</title>
-      <meta charset="UTF-8"/>
-      <meta http-equiv="content-type" content="text/html;" />
-      <meta name="author" content="La FNOC" />
-      <link rel="stylesheet" type="text/css" href="../view/design/style.css" />
-    </head>
-
-    <body>
       <html lang="en" dir="ltr">
         <head>
           <meta charset="utf-8">
@@ -15,7 +5,7 @@
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
           <link rel="stylesheet" type="text/css" href="../view/design/connexion.view.css" media="screen"/>
-          <title>SCR - Connexion</title>
+          <title>FNOC - Connexion</title>
         </head>
         <body>
           <header>
@@ -23,35 +13,26 @@
           </header>
           <form class="" action="../controler/profil.ctrl.php" method="get">
             <fieldset>
+
               <h2>Identifiez-vous</h2>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="nom">Nom</span>
+                  <span class="input-group-text" id="mail">Mail</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="nom" required>
+                <input type="email" class="form-control" aria-label="Default" aria-describedby="mail" required>
               </div>
-
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="prenom">Prénom</span>
+                  <span class="input-group-text" id="motDePasse">Mot de passe</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="prenom" required>
+                <input type="password" class="form-control" aria-label="Default" aria-describedby="motDePasse" required>
               </div>
 
               <p><button type="submit" class="btn btn-dark">Connexion</button></p>
-
             </fieldset>
+            <a href="../view/inscription.view.html"><p>S'incrire</p></a>
           </form>
+
         </body>
       </html>
-
-      <?php
-
-      ?>
-
-      <footer>
-
-      </footer>
-    </body>
-</html>
