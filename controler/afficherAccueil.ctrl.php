@@ -6,6 +6,7 @@ require_once('../model/DAO.class.php');
   $dao = new DAO();
   $vue = new View();
   $ref;
+  $config = parse_ini_file('../config/config.ini');
 
     $nbArticle = 9;
     $articles =array() ;
@@ -20,4 +21,5 @@ require_once('../model/DAO.class.php');
 
     $vue->assign('config',$config);
   $vue->assign('articles',$articles);
+  $vue->assign('chemin',$config['images_path']);
   $vue->display('../view/accueil.view.php');

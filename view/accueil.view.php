@@ -60,8 +60,10 @@
       <?php foreach ($articles as $key => $value): ?>
         <article class="">
             <h2><?=$value->getLibelCours()?></h2>
-            <a href="../controler/afficherArticle.ctrl.php?ref=<?=$value->getRef()?>"><img src="<?=$config['images_path'].$value->getImage()?>" alt=""></a>
-            <h2> article : <?=$value->getPrix()?>€</h2>
+            <a href="../controler/afficherArticle.ctrl.php?ref=<?=$value->getRef()?>">
+              <img src="<?=$chemin?><?=$value->getImage()?>" alt=""></a>
+            <h2><?=$value->getPrix()?>€</h2>
+            <button type="button" class="btn btn-primary">Ajouter au panier</button>
     </article>
  <?php endforeach; ?>
       <footer>
