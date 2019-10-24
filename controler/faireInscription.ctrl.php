@@ -4,18 +4,22 @@
   $dao = new DAO();
   $vue = new  View();
 
-  if (count($_POST)==4){//Vérifie qu'il y a asser d'element envoyé
-    $vue->assign('erreur',false);
+  $path = $_GET['PATH_INFO'] ?? "";
+
+  if ($path == "../view/connexion.view.html") {
+    $erreur = "";
+    $vue->assign('erreur', $erreur);
     $vue->display("../view/inscription.view.php");
+  } else {
+    if (count($_POST) == 4) { //Vérifie qu'il y a assez d'éléments envoyés
+      if($dao->ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['mdp'])) {
+          $vue->display("../view/accueil.view.php");
+      } else {
+        $erreur = "Cette adresse mail a déjà été utilisé";
+      }
+    } else {
+      $erreur = "Il manque des informations pour poursuivre l'inscription";
   }
-  else{
-    //Vérifie que l'utilisateur n'existe pas déja et l'ajoute sinon
-    //Affiche la page accueil par la suite
-      if(!membreExistant($_POST['email'],$_POST['mdp'] && $dao->ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['mdp'])){
-        $vue->display("../acceuil.view.php");
-    }
-    else{
-      $vue->assign('erreur',true);
-      $vue->display("../inscription.view.php");
-    }
-  }
+  $vue->assign('erreur', $erreur);
+  $vue->display("../view/inscription.view.php");
+}

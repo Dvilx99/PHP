@@ -81,7 +81,7 @@
 
         // Acces à une catégorie
         // Retourne un objet de la classe Categorie connaissant son identifiant
-        function getCat(int $id): Categorie {
+        function getCat(int $id) : Categorie {
             $req = "SELECT * FROM categorie WHERE id = $id";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
@@ -114,7 +114,8 @@
           return $liste[0];
         }
 
-        function getArticlesParCategorie(int $categorie) : array {
+        function getArticlesParCategorie(int $int) : array {
+          $categorie = $this->getCat($int);
           $categories = $categorie->getPath();
           foreach ($categories as $key => $value) {
             $req = "SELECT * FROM article WHERE categorie = $value";

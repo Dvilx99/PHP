@@ -9,16 +9,13 @@
         </head>
         <body>
           <header>
-            <img src="../view/design/Fnac_Logo.png" alt="">
+            <img src="../view/design/fnoc.png" alt="">
           </header>
           <form class="" action="../controler/faireInscription.ctrl.php" method="post">
             <fieldset>
               <h2>Inscrivez-vous</h2>
-              <?=$erreur?>
-              <?if($erreur)?>
               <div class="input-group mb-3">
-                <h3>L'utilisateur existe déjà</h3>
-                <?endif?>
+                <h3><?=$erreur?></h3>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -36,9 +33,9 @@
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="mail">Mail</span>
+                  <span class="input-group-text" id="email">Mail</span>
                 </div>
-                <input type="email" class="form-control" aria-label="Default" aria-describedby="mail" name ="mail" required>
+                <input type="email" class="form-control" aria-label="Default" aria-describedby="email" name ="email" required>
               </div>
 
               <div class="input-group mb-3">
