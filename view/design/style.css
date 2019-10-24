@@ -1,3 +1,90 @@
+body{
+  margin:auto;
+  width: 95%;
+}
+header{
+  text-align: center;
+}
+header h1{
+  color:#1f45a4;
+}
+/*------------- Navbar -------------*/
+  #menu{
+    height: 35px;
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #menu ul{
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #menu ul, #menu li{
+    list-style-type: none;
+  }
+  #menu li{
+    width: 300px;
+  }
+  #menu li a{
+    display: block;
+    text-decoration: none;
+    border: 1px solid #fff;
+  }
+  /*---------- Niveau 1 ----------*/
+  #menu .niveau1 li{
+    float: left;
+    margin: 0 -1px 0 0;
+  }
+  #menu .niveau1 li a {
+    padding: 5px 0;
+    width: 300px;
+    color: #fff;
+    background: #1f45a4;
+  }
+  #menu .niveau1 li:hover a,
+  #menu .niveau1 li a:hover {
+    color: #fff;
+    background: #1f45a4;
+  }
+  /*---------- Niveau 2 ----------*/
+  #menu .niveau2 {
+    position: absolute;
+    top: -9999em;
+    padding : 0;
+  }
+  #menu .niveau2 li {
+    clear: left;
+    margin: -1px 0 0;
+  }
+  #menu .niveau2 li a{
+    color: #fff;
+    width: 300px;
+  }
+  #menu .niveau2 li a:hover {
+    background: #25a9af;
+  }
+  #menu li:hover .niveau2,
+  #menu .sfhover .niveau2 {
+    top: auto;
+  }
+
+  article{
+    width: 211px;
+    height: 211px;
+    display: inline-block;
+    border: 1px solid #1f45a4;
+  	padding: 5px;
+    margin-bottom: 5px;
+  	vertical-align: top;
+  }
+  article h2 {
+  		font-size:small;
+  }
+
+  article img {
+  	   width: 100px;
+  }
 /*body {
 	font-family: "Arial";
 	width: 960px;
