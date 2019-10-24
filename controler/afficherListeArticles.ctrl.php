@@ -1,31 +1,20 @@
 <?php
-    // Partie principale
-
-    // Inclusion du framework
     include_once("../framework/view.class.php");
-
-    // Inclusion du modèle
     include_once("../model/DAO.class.php");
 
-    // Creation de l'unique objet DAO
     $dao = new DAO();
-
-    ///////////////////////////////////////////////////////
-    //  Création qui concerne la DAO
-    ///////////////////////////////////////////////
-
-    $categorie = $_GET['categorie'];
-    $liste = $dao->getArticlesParCategorie($categorie);
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Construction de la vue
-    ////////////////////////////////////////////////////////////////////////////
     $view = new View();
 
-    // Passe les paramètres à la vue
+    $config = parse_ini_file('../config/config.ini');
 
-    $view->assign('liste', $liste);
-    
-    // Charge la vue
+    $categorie = $_GET['categorie'] ?? 0;
+    //Si la categorie est set, lui donne $_GET, 0 sinon
+
+    if ($categorie != 0) {
+      $liste = $dao->getArticlesParCategorie($categorie);
+      $view->assign('liste', $liste);
+    }
+
+    $view->assign('config', $config);
     $view->display("listeArticles.view.php")
     ?>
