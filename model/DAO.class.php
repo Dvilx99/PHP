@@ -115,9 +115,12 @@
         }
 
         function getArticlesParCategorie(int $categorie) : array {
-          $req = "SELECT * FROM article WHERE categorie = $categorie";
-          $statement = $this->db->query($req);
-          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          $categories = $categorie->getPath();
+          foreach ($categories as $key => $value) {
+            $req = "SELECT * FROM article WHERE categorie = $value";
+            $statement = $this->db->query($req);
+            $liste[] = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          }
           return $liste;
         }
 
