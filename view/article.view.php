@@ -12,7 +12,7 @@
         <h1>la FNOC</h1>
       </header>
       <div class="">
-        <img src="<?=$config['images_path']?><?=$article->getImage()?>" alt="">
+        <img src="<?=$chemin?><?=$article->getImage()?>" alt="">
       </div>
       <div class="">
         <p>ref : <?=$article->getRef()?></p>

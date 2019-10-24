@@ -21,49 +21,50 @@
           <header>
             <img src="../view/design/Fnac_Logo.png" alt="">
           </header>
-          <form class="" action="../controler/afficherAccueil.ctrl.php" method="post">
+          <form class="" action="../controler/faireInscription.ctrl.php" method="post">
             <fieldset>
               <h2>Inscrivez-vous</h2>
-
+              <?=$erreur?>
+              <?if($erreur)?>
+              <div class="input-group mb-3">
+                <h3>L'utilisateur existe déjà</h3>
+                <?endif?>
+              </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="nom">Nom</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="nom" required>
+                <input type="text" name="nom" class="form-control" aria-label="Default" aria-describedby="nom" required>
               </div>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="prenom">Prénom</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="prenom" required>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="prenom" name="prenom" required>
               </div>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="mail">Mail</span>
                 </div>
-                <input type="email" class="form-control" aria-label="Default" aria-describedby="mail" required>
+                <input type="email" class="form-control" aria-label="Default" aria-describedby="mail" name ="mail" required>
               </div>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="motDePasse">Mot de passe </span>
                 </div>
-                <input type="password" class="form-control" aria-label="Default" aria-describedby="motDePasse" required>
+                <input type="password" class="form-control" aria-label="Default" aria-describedby="motDePasse" name="mdp" required>
               </div>
 
 
-                <button type="submit" class="btn btn-dark">S'inscrire</button></p>
+                <button type="submit" class="btn btn-dark"> S'inscrire</button></p>
 
             </fieldset>
           </form>
         </body>
       </html>
-
-      <?php
-
-      ?>
 
       <footer>
 

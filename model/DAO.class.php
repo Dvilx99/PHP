@@ -113,13 +113,6 @@
           return $liste[0];
         }
 
-        function getArticlesParCategorie(int $categorie) {
-          $req = "SELECT * FROM article WHERE categorie = $categorie";
-          $statement = $this->db->query($req);
-          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-          return $liste;
-        }
-
     }
 
     ?>
