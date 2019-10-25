@@ -97,15 +97,6 @@
             return $liste;
         }
 
-        //Renvoie l'utilisateur pour le nom est mot de passse donné
-        //Null sinon
-        function membreExistant(string $email,string $mdp) : boolean {
-          $req = "SELECT * FROM utilisateur WHERE email=$email and $mdp=mdp limit 1";
-          $statement = $this->db->query($req);
-          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-          return count($liste)==1;
-        }
-
 
         function getArticle(int $ref) : Article {
           $req = "SELECT * FROM article WHERE ref = $ref";
