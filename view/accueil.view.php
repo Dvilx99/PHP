@@ -56,16 +56,17 @@
         </div>
 
       </header>
+      <section>
 
-      <?php foreach ($articles as $key => $value): ?>
+        <?php foreach ($articles as $key => $value): ?>
         <article class="">
             <h2><?=$value->getLibelCours()?></h2>
             <a href="../controler/afficherArticle.ctrl.php?ref=<?=$value->getRef()?>">
-              <img src="<?=$chemin?><?=$value->getImage()?>" alt=""></a>
+              <p><img src="<?=$chemin?><?=$value->getImage()?>" alt=""></a></p>
             <h2><?=$value->getPrix()?>€</h2>
-            <button type="button" class="btn btn-primary">Ajouter au panier</button>
-    </article>
- <?php endforeach; ?>
+        </article>
+        <?php endforeach; ?>
+      </section>
       <footer>
 
       </footer>
