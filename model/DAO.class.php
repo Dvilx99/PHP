@@ -81,7 +81,7 @@
 
         // Acces à une catégorie
         // Retourne un objet de la classe Categorie connaissant son identifiant
-        function getCat(int $id): Categorie {
+        function getCat(int $id) : Categorie {
             $req = "SELECT * FROM categorie WHERE id = $id";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
@@ -97,15 +97,6 @@
             return $liste;
         }
 
-        //Renvoie l'utilisateur pour le nom est mot de passse donné
-        //Null sinon
-        function membreExistant(string $email,string $mdp) : boolean {
-          $req = "SELECT * FROM utilisateur WHERE email=$email and $mdp=mdp limit 1";
-          $statement = $this->db->query($req);
-          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-          return count($liste)==1;
-        }
-
 
         function getArticle(int $ref) : Article {
           $req = "SELECT * FROM article WHERE ref = $ref";
@@ -114,10 +105,14 @@
           return $liste[0];
         }
 
-        function getArticlesParCategorie(int $categorie) : array {
-          $req = "SELECT * FROM article WHERE categorie = $categorie";
-          $statement = $this->db->query($req);
-          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+        function getArticlesParCategorie(int $int) : array {
+          $categorie = $this->getCat($int);
+          $categories = $categorie->getPath();
+          foreach ($categories as $key => $value) {
+            $req = "SELECT * FROM article WHERE categorie = $value";
+            $statement = $this->db->query($req);
+            $liste[] = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          }
           return $liste;
         }
 

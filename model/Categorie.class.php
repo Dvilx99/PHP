@@ -19,12 +19,13 @@
         }
 
         function getPath() : array {
+          // MARCHE PAS
           $dao = new DAO();
           $tab = array();
-          $i = $this->getId();
+          $id = $this->getId();
           $idPere = $this->getPere();
           while ($id!=$idPere){
-            $courant = $dao->get($id);
+            $courant = $dao->getCat($id);
             array_unshift($tab,$courant);
             $id = $courant->getId();
             $idPere = $courant->getPere();

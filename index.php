@@ -1,3 +1,3 @@
 <?php
-header('Location: controler/faireInscription.ctrl.php');
+header('Location: view/connexion.view.html');
 ?>
