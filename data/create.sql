@@ -15,13 +15,13 @@ CREATE TABLE categorie (
 	FOREIGN KEY(pere) REFERENCES categorie(id)
 );
 
-CREATE TABLE Utilisateur (
+CREATE TABLE utilisateur (
 	nom TEXT,
 	prenom TEXT,
 	email TEXT PRIMARY KEY,
 	mdp TEXT
 );
-CREATE TABLE Panier(
+CREATE TABLE panier(
 	utilisateur TEXT,
 	article INTEGER,
 	PRIMARY KEY (utilisateur,article),

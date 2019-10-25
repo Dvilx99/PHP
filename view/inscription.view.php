@@ -16,6 +16,7 @@
               <h2>Inscrivez-vous</h2>
               <div class="input-group mb-3">
                 <h3><?=$erreur?></h3>
+              <? if ($erreur===""){?>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -47,7 +48,7 @@
 
 
                 <button type="submit" class="btn btn-dark"> S'inscrire</button></p>
-
+                <? }?>
             </fieldset>
           </form>
         </body>

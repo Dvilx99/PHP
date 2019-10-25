@@ -13,13 +13,15 @@
   } else {
     if (count($_POST) == 4) { //Vérifie qu'il y a assez d'éléments envoyés
       if($dao->ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['mdp'])) {
-          $vue->display("../view/accueil.view.php");
+          $vue->display("../controler/afficherAccueil.ctrl.php");
       } else {
         $erreur = "Cette adresse mail a déjà été utilisé";
+        $vue->assign('erreur', $erreur);
+        $vue->display("../view/inscription.view.php");
       }
     } else {
       $erreur = "Il manque des informations pour poursuivre l'inscription";
+      $vue->assign('erreur', $erreur);
+      $vue->display("../view/inscription.view.php");
   }
-  $vue->assign('erreur', $erreur);
-  $vue->display("../view/inscription.view.php");
 }
