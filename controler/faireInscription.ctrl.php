@@ -12,7 +12,7 @@
     //Vérifie que l'utilisateur n'existe pas déja et l'ajoute sinon
     //Affiche la page accueil par la suite
       if(!membreExistant($_POST['email'],$_POST['mdp'] && $dao->ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['mdp'])){
-        $vue->display("../acceuil.view.php");
+        $vue->display("../view/acceuil.view.php");
     }
     else{
       $vue->assign('erreur',true);
