@@ -23,5 +23,5 @@
       $erreur = "Il manque des informations pour poursuivre l'inscription";
       $vue->assign('erreur', $erreur);
       $vue->display("../view/inscription.view.php");
+    }
   }
-}
