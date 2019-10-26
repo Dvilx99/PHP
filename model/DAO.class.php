@@ -107,13 +107,26 @@
 
         function getArticlesParCategorie(int $int) : array {
           $categorie = $this->getCat($int);
-          $categories = $categorie->getPath();
-          foreach ($categories as $key => $value) {
+          $req = "SELECT * FROM categorie WHERE pere = $int";
+          $statement = $this->db->query($req);
+          $fils = $statement->fetchAll(PDO::FETCH_ASSOC);
+          var_dump($fils);
+
+          foreach ($fils as $key => $value) {
+            $int = $value['id'];
+            $req = "SELECT * FROM article WHERE categorie = $int";
+            $statement = $this->db->query($req);
+            $articles = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+            var_dump($articles);
+          }
+          return array();
+
+          /*foreach ($categories as $key => $value) {
             $req = "SELECT * FROM article WHERE categorie = $value";
             $statement = $this->db->query($req);
             $liste[] = $statement->fetchAll(PDO::FETCH_CLASS, "article");
           }
-          return $liste;
+          return $liste;*/
         }
 
         function getSousCategorie(Categorie $pere) : array{
