@@ -137,17 +137,22 @@
         }
 
         function ajoutUtilisateur(string $nom, string $prenom, string $email, string $mdp) {
-          $req = ("SELECT email FROM utilisateur WHERE email = $email");
-          $statement = $this->db>query($req);
-          $existingUser = $statement->fetchAll(PDO::FETCH_CLASS, "Utilisateur");
-
-          if ($existingUser[0][0] == $email) {
+          $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
+          $statement = $this->db->query($req);
+          $existingUser = $statement->fetchAll(PDO::FETCH_ASSOC);
+          $mail = $existingUser[0] ?? "";
+          if (strcmp($email,$mail)==0) {
             return 0;
           } else {
             $utilisateur = new Utilisateur($nom, $prenom, $email, $mdp);
             $serialized = serialize($utilisateur);
-            $stmt = $db->prepare("INSERT INTO utilisateur(nom, prenom, email, mdp) VALUES ($nom, $prenom, $email, $mdp)");
-            $stmt->execute(array($serializedObject));
+            $stmt = $this->db->prepare("INSERT INTO utilisateur(nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :mdp)");
+            $stmt->execute(array(
+              'nom' => $nom,
+              'prenom' => $prenom,
+              'email' => $email,
+              'mdp' => $mdp
+            ));
             return 1;
           }
         }

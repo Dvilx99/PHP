@@ -47,7 +47,6 @@
 
 
                 <button type="submit" class="btn btn-dark"> S'inscrire</button></p>
-
             </fieldset>
           </form>
         </body>
