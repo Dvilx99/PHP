@@ -140,8 +140,7 @@
           $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
           $statement = $this->db->query($req);
           $existingUser = $statement->fetchAll(PDO::FETCH_ASSOC);
-          $mail = $existingUser[0] ?? "";
-          if (strcmp($email,$mail)==0) {
+          if (strcmp($email,$existingUser[0]['email'])==0) {
             return 0;
           } else {
             $utilisateur = new Utilisateur($nom, $prenom, $email, $mdp);
@@ -157,6 +156,25 @@
           }
         }
 
-    }
+        function MembreExistant(string $email, string $mdp) {
+          $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
+          $statement = $this->db->query($req);
+          $existingMail = $statement->fetchAll(PDO::FETCH_ASSOC);
+          $mail = $existingMail[0] ?? "";
+          if ($mail == "") {
+            return 2;
+          } else {
+            $req = ("SELECT mdp FROM utilisateur WHERE email = '$email' and mdp = '$mdp'");
+            $statement = $this->db->query($req);
+            $existingPw = $statement->fetchAll(PDO::FETCH_ASSOC);
+            if(strcmp($mdp, $existingPw[0]['mdp']) == 0) {
+              return 1;
+            } else {
+              return 3;
+            }
+          }
+
+        }
+  }
 
     ?>

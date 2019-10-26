@@ -11,22 +11,23 @@
           <header>
             <img src="../view/design/fnoc.png" alt="">
           </header>
-          <form class="" action="../controler/profil.ctrl.php" method="get">
+          <form class="" action="../controler/seConnecter.ctrl.php" method="post">
             <fieldset>
 
               <h2>Identifiez-vous</h2>
-
+              <h3><?=$erreur = $erreur ?? ""?></h3>
               <div class="input-group mb-3">
+
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="mail">Mail</span>
+                  <span class="input-group-text" id="email">Mail</span>
                 </div>
-                <input type="email" class="form-control" aria-label="Default" aria-describedby="mail" required>
+                <input type="email" name="email" class="form-control" aria-label="Default" aria-describedby="mail" required>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="motDePasse">Mot de passe</span>
+                  <span class="input-group-text" id="mdp">Mot de passe</span>
                 </div>
-                <input type="password" class="form-control" aria-label="Default" aria-describedby="motDePasse" required>
+                <input type="password" name="mdp" class="form-control" aria-label="Default" aria-describedby="motDePasse" required>
               </div>
 
               <p><button type="submit" class="btn btn-dark">Connexion</button></p>
