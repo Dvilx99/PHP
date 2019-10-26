@@ -1,4 +1,4 @@
-                                                                                                           <?php
+<?php
 require_once('../framework/view.class.php');
 require_once('../model/DAO.class.php');
 
