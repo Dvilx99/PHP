@@ -33,7 +33,7 @@
               <p><button type="submit" class="btn btn-dark">Connexion</button></p>
 
             </fieldset>
-            <a href="../controler/faireInscription.ctrl.php?PATH_INFO=../view/connexion.view.html"><p>S'inscrire</p></a>
+            <a href="../controler/faireInscription.ctrl.php?PATH_INFO=../view/connexion.view.php"><p>S'inscrire</p></a>
           </form>
 
         </body>
