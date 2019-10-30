@@ -60,7 +60,6 @@
         		</li>
         	</ul>
         </div>
-
       </header>
       <section>
         <?php foreach ($articles as $key => $value): ?>

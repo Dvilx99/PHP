@@ -2,6 +2,7 @@
 
     require_once("../model/Categorie.class.php");
     require_once("../model/Article.class.php");
+    require_once("../model/Utilisateur.php");
 
     // Le Data Access Object
     // Il représente la base de donnée
@@ -9,12 +10,12 @@
         // L'objet local PDO de la base de donnée
         private $db;
         // Le type, le chemin et le nom de la base de donnée
-        private $database = 'sqlite:../data/FNOC.db';
+        private $database = 'sqlite:../data/fnoc.db';
 
         // Constructeur chargé d'ouvrir la BD
         function __construct() {
             try {
-              $this->db = new PDO($database);
+              $this->db = new PDO($this->database);
             }
             catch (PDOException $e){
               die("erreur de connexion:".$e->getMessage());
@@ -80,7 +81,7 @@
 
         // Acces à une catégorie
         // Retourne un objet de la classe Categorie connaissant son identifiant
-        function getCat(int $id): Categorie {
+        function getCat(int $id) : Categorie {
             $req = "SELECT * FROM categorie WHERE id = $id";
             $statement = $this->db->query($req);
             $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
@@ -96,14 +97,84 @@
             return $liste;
         }
 
-        //Vérifie que le nom rentré existe
-        //Vrai s'il existe
-        function verifNomExistant(string $nom) : boolean {
-          $req = "SELECT * FROM utilisateur WHERE nom=$nom limit 1";
+
+        function getArticle(int $ref) : Article {
+          $req = "SELECT * FROM article WHERE ref = $ref";
           $statement = $this->db->query($req);
           $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-          return count($liste)==1;
+          return $liste[0];
         }
-    }
+
+        function getArticlesParCategorie(int $int) : array {
+          $categorie = $this->getCat($int);
+          $req = "SELECT * FROM categorie WHERE pere = $int";
+          $statement = $this->db->query($req);
+          $fils = $statement->fetchAll(PDO::FETCH_ASSOC);
+          var_dump($fils);
+
+          foreach ($fils as $key => $value) {
+            $int = $value['id'];
+            $req = "SELECT * FROM article WHERE categorie = $int";
+            $statement = $this->db->query($req);
+            $articles = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+            var_dump($articles);
+          }
+          return array();
+
+          /*foreach ($categories as $key => $value) {
+            $req = "SELECT * FROM article WHERE categorie = $value";
+            $statement = $this->db->query($req);
+            $liste[] = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+          }
+          return $liste;*/
+        }
+
+        function getSousCategorie(Categorie $pere) : array{
+          $req = "SELECT * FROM categorie WHERE pere=$pere";
+          $statement = $this->db->query($req);
+          $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
+          return $liste;
+        }
+
+        function ajoutUtilisateur(string $nom, string $prenom, string $email, string $mdp) {
+          $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
+          $statement = $this->db->query($req);
+          $existingUser = $statement->fetchAll(PDO::FETCH_ASSOC);
+          if (strcmp($email,$existingUser[0]['email'])==0) {
+            return 0;
+          } else {
+            $utilisateur = new Utilisateur($nom, $prenom, $email, $mdp);
+            $serialized = serialize($utilisateur);
+            $stmt = $this->db->prepare("INSERT INTO utilisateur(nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :mdp)");
+            $stmt->execute(array(
+              'nom' => $nom,
+              'prenom' => $prenom,
+              'email' => $email,
+              'mdp' => $mdp
+            ));
+            return 1;
+          }
+        }
+
+        function MembreExistant(string $email, string $mdp) {
+          $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
+          $statement = $this->db->query($req);
+          $existingMail = $statement->fetchAll(PDO::FETCH_ASSOC);
+          $mail = $existingMail[0] ?? "";
+          if ($mail == "") {
+            return 2;
+          } else {
+            $req = ("SELECT mdp FROM utilisateur WHERE email = '$email' and mdp = '$mdp'");
+            $statement = $this->db->query($req);
+            $existingPw = $statement->fetchAll(PDO::FETCH_ASSOC);
+            if(strcmp($mdp, $existingPw[0]['mdp']) == 0) {
+              return 1;
+            } else {
+              return 3;
+            }
+          }
+
+        }
+  }
 
     ?>

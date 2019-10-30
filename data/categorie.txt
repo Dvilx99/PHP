@@ -1,0 +1,21 @@
+1|Rugby|1
+2|Ballons et Accessoires|1
+3|Vêtements de rugby|1
+4|Haut de rugby|3
+5|Bas de rugby|3
+6|Crampons de rugby|3
+7|Tennis de table|7
+8|Tables et Housses|7
+9|Raquettes & Bois et revêtements|7
+10|Balles|7
+11|Filets|7
+12|Chasse|12
+13|Vêtements de chasse|12
+14|Chaussures & bottes|13
+15|Accessoires|13
+16|Accessoire pour chien|12
+17|Munitions, Accessoires de l'arme|12
+18|Echec|18
+19|Pieces|18
+20|Echequier|18
+21|Livres sur les echecs|18

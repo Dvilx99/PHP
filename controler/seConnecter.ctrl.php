@@ -4,12 +4,12 @@
   session_start();
   $dao = new DAO();
   $vue = new  View();
-  //Durée du cookie
+  //Durée de la session
   $temps = time() +3*24*3600;
-//Vérifieque les attribut de la session $existe
+//Vérifie que les attributs de la session existe
 //Si oui on lance l'acceuil
 //Si non on enregistre les informations pour crée
-//un nouvelle utilisateur et session
+//un nouvelle utilisateur et creer une session
   if (isset($_SESSION['email'])&& isset($_SESSION['mdp'])){
     $vue->display("../controler/afficherAccueil.ctrl.php");
   }
