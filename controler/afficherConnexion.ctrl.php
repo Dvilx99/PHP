@@ -6,8 +6,7 @@ $vue = new View()
 $temps = 3*24*3600;
 //Si il n'y a pas de session prédefini j'envoie à la connexion
 if (!isset($_SESSION['email']) || !isset($_SESSION['mdp'])) {
-  $vue->display('../view/connexion.view.php');
-  var_dump($_SESSION['email']);
+  $vue->display('../view/afficherAcceuil.ctrl.php');
 }
 //Sinon j'ajoute au post les valeur des attributs de la session
 // puis je demande de me connecter
