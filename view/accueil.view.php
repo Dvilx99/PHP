@@ -60,10 +60,8 @@
         		</li>
         	</ul>
         </div>
-
       </header>
       <section>
-
         <?php foreach ($articles as $key => $value): ?>
         <article class="">
             <h2><?=$value->getLibelCours()?></h2>

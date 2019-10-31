@@ -17,7 +17,6 @@
               <h2>Identifiez-vous</h2>
               <h3><?=$erreur = $erreur ?? ""?></h3>
               <div class="input-group mb-3">
-
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="email">Mail</span>
                 </div>
