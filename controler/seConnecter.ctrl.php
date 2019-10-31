@@ -4,6 +4,7 @@
   session_start();
   $dao = new DAO();
   $vue = new  View();
+
   //Durée de la session
   $temps = time() +3*24*3600;
 //Vérifie que les attributs de la session existe

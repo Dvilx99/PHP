@@ -7,6 +7,10 @@
     // Le Data Access Object
     // Il représente la base de donnée
     class DAO {
+      //Reponse dans membre existant
+      public static $MEMBRE_EXISTE =1;
+      public static $EMAIL_MANQUANT = 2;
+      public static $MDP_MANQUANT =3;
         // L'objet local PDO de la base de donnée
         private $db;
         // Le type, le chemin et le nom de la base de donnée
@@ -162,15 +166,15 @@
           $existingMail = $statement->fetchAll(PDO::FETCH_ASSOC);
           $mail = $existingMail[0] ?? "";
           if ($mail == "") {
-            return 2;
+            return self::$EMAIL_MANQUANT;
           } else {
             $req = ("SELECT mdp FROM utilisateur WHERE email = '$email' and mdp = '$mdp'");
             $statement = $this->db->query($req);
             $existingPw = $statement->fetchAll(PDO::FETCH_ASSOC);
             if(strcmp($mdp, $existingPw[0]['mdp']) == 0) {
-              return 1;
+              return self::$MEMBRE_EXISTE;
             } else {
-              return 3;
+              return self::$MDP_MANQUANT;
             }
           }
 
