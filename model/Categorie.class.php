@@ -19,16 +19,20 @@
         }
 
         function getPath() : array {
-          $chemin = array();
-          $parent = $this->getPere();
-
-          array_unshift($chemin, $parent);
-          while($parent!="Rugby" && $parent!="Tennis de table" && $parent!="Chasse" && $parent!="Echec") {
-            $parent = $parent->getPere();
-            array_unshift($chemin, $parent);
+          $dao = new DAO();
+          $tab = array();
+          $idCourant = intval($this->getId());
+          $pere = intval($this->getPere());
+          $CatCourante = $dao->getCat($idCourant);
+          while ($idCourant!=$pere){
+            array_unshift($tab,$CatCourante);
+            $idCourant = $pere;
+            $CatCourante = $dao->getCat($idCourant);
+            $pere = intval($CatCourante->getPere());
           }
-          return $chemin;
-        }
+          array_unshift($tab,$dao->getCat($idCourant));
+           return $tab;
+      }
   }
 
 

@@ -2,8 +2,8 @@
 
     require_once("../model/Categorie.class.php");
     require_once("../model/Article.class.php");
-    require_once("../model/Utilisateur.php");
-
+    require_once("../model/Utilisateur.class.php");
+    require_once("../model/Panier.class.php");
     // Le Data Access Object
     // Il représente la base de donnée
     class DAO {
@@ -92,14 +92,6 @@
             return $liste[0];
         }
 
-        // Acces au n articles à partir de la reférence $ref
-        // Retourne une table d'objets de la classe Article
-        function getNCateg(int $ref,int $n,string $categorie) : array {
-            $req = "SELECT * FROM article WHERE categorie = $categorie AND ref >= $ref LIMIT $n";
-            $statement = $this->db->query($req);
-            $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-            return $liste;
-        }
 
 
         function getArticle(int $ref) : Article {
@@ -109,32 +101,16 @@
           return $liste[0];
         }
 
-        function getArticlesParCategorie(int $int) : array {
-          $categorie = $this->getCat($int);
-          $req = "SELECT * FROM categorie WHERE pere = $int";
+        function getArticlesParCategorie(int $int,int $lim) : array {
+          $req = "SELECT * FROM article WHERE categorie = $int LIMIT $lim";
           $statement = $this->db->query($req);
-          $fils = $statement->fetchAll(PDO::FETCH_ASSOC);
-          var_dump($fils);
-
-          foreach ($fils as $key => $value) {
-            $int = $value['id'];
-            $req = "SELECT * FROM article WHERE categorie = $int";
-            $statement = $this->db->query($req);
-            $articles = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-            var_dump($articles);
-          }
-          return array();
-
-          /*foreach ($categories as $key => $value) {
-            $req = "SELECT * FROM article WHERE categorie = $value";
-            $statement = $this->db->query($req);
-            $liste[] = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-          }
-          return $liste;*/
+          $mesArticles = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          return $mesArticles;
         }
 
         function getSousCategorie(Categorie $pere) : array{
-          $req = "SELECT * FROM categorie WHERE pere=$pere";
+          $idPere = intval($pere->getId());
+          $req = "SELECT * FROM categorie WHERE pere=$idPere and id!=$idPere";
           $statement = $this->db->query($req);
           $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
           return $liste;
@@ -158,6 +134,46 @@
             ));
             return 1;
           }
+        }
+
+        //renvoie l'utilisarteur qui est associé a l'email
+        function getUtilisateur(string $email) : Utilisateur {
+          $req = "SELECT * FROM utilisateur WHERE email = '$email'";
+          $statement = $this->db->query($req);
+          $monUser = $statement->fetchAll(PDO::FETCH_CLASS,'utilisateur');
+          return $monUser[0];
+        }
+        //ajoute un Panier a la base de données
+        function ajoutPanier($utilisateur, $article) {
+          $panier = new Panier($utilisateur, $article);
+          $serialized = serialize($panier);
+          $stmt = $this->db->prepare("INSERT INTO panier(utilisateur,article) VALUES (:utilisateur, :article)");
+          $stmt->execute(array(
+            'utilisateur' => $utilisateur,
+            'article' => $article
+          ));
+          return 1 ;
+        }
+        //donne le Panier de l'utilisateur
+        function getPanier($utilisateur) : array {
+          $req = "SELECT article FROM panier WHERE utilisateur = $utilisateur";
+          $statement = $this->db->query($req);
+          $monUser = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          return $articles;
+        }
+        //Retourne les article que l'utilisateur a reservé
+        function getArticleUtilisateur(Utilisateur $user) : array {
+          $req = "SELECT article FROM panier WHERE utilisateur = $user";
+          $statement = $this->db->query($req);
+          $mesArticles = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          return $mesArticles;
+        }
+        //Censer etre utiliser pour factoriser ComposantVue/creationHeader mais pas fait
+        function getAllCategoriePere() : array{
+          $req = "SELECT * FROM categorie WHERE pere = id";
+          $statement = $this->db->query($req);
+          $lesPeres = $statement->fetchAll(PDO::FETCH_CLASS,'categorie');
+          return $lesPeres;
         }
 
         function MembreExistant(string $email, string $mdp) {
