@@ -4,7 +4,9 @@
 
     // Inclusion du modèle
     include_once("../model/DAO.class.php");
-
+    //Si il y une session je continue
+    //Sinon j'envoie à la connexion
+    if (isset($_SESSION['isConnected'])){
     // Creation de l'unique objet DAO
     $dao = new DAO();
     $view = new View();
@@ -17,5 +19,8 @@
     $view->assign('panier', $panier);
 
     $view->display("finCommande.view.php");
-
+  }
+  else{
+    $view->display('seConnecter.ctrl.php');
+  }
 ?>

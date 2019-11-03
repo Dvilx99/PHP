@@ -1,3 +1,4 @@
+<?php require_once("ComposantsVue.class.php"); ?>
 <html>
   <head>
       <title>La FNOC</title>
@@ -8,69 +9,26 @@
     </head>
 
     <body>
-      <header>
-        <h1>la FNOC</h1>
-        <div id="menu">
-        	<ul class="niveau1">
-            <li>
-              <a href="../controler/afficherAccueil.ctrl.php">Accueil</a>
-            </li>
-        		<li>
-        			<a href="../controler/afficherListeArticles.ctrl.php?categorie=12">Chasse</a>
-        			<ul class="niveau2">
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=13">Vêtements de chasse</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=14">Chaussures & bottes</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=15">Accessoires</a></li>
-                <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=16">Accessoire pour chien</a></li>
-                <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=17">Munitions, Accessoires de l'arme</a></li>
-        			</ul>
-        		</li>
-        		<li>
-        			<a href="../controler/afficherListeArticles.ctrl.php?categorie=18">Echec</a>
-        			<ul class="niveau2">
-                <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=19">Pieces</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=20">Echequier</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=21">Livres sur les echecs</a></li>
-              </ul>
-        		</li>
-        		<li>
-        			<a href="../controler/afficherListeArticles.ctrl.php?categorie=1">Rugby</a>
-        			<ul class="niveau2">
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=2">Ballons et Accessoires</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=3">Vêtements de rugby</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=4">Haut de rugby</a></li>
-                <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=5">Bas de rugby</a></li>
-                <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=6">Crampons de rugby</a></li>
-        			</ul>
-        		</li>
-        		<li>
-        			<a href="../controler/afficherListeArticles.ctrl.php?categorie=7">Tennis de table</a>
-        			<ul class="niveau2">
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=8">Tables et Housses</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=9">Raquettes & Bois et revêtements</a></li>
-        				<li><a href="../controler/afficherListeArticles.ctrl.php?categorie=10">Balles</a></li>
-                <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=11">Filets</a></li>
-        			</ul>
-        		</li>
-            <li>
-        			<a href="../controler/afficherPanier.ctrl.php">Mon Panier</a>
-        		</li>
-            <li>
-        			<a href="../view/connexion.view.php">Déconnexion</a>
-        		</li>
-        	</ul>
-        </div>
-
-      </header>
-
-      <?php foreach ($liste as $key => $value): ?>
-        <article class="">
-            <h2><?=$value->getLibelCours()?></h2>
-            <a href="../controler/afficherArticle.ctrl.php?ref=<?=$value->getRef()?>"><img src="<?=$config['images_path'].$value->getImage()?>" alt=""></a>
-            <h2> article : <?=$value->getPrix()?>€</h2>
-        </article>
-      <?php endforeach; ?>
-
+      <?php ComposantsVue::creationHeader(); ?>
+      <nav>
+    <!-- Bouton de retour au début de la liste -->
+    <a href="../controler/afficherListeArticles.ctrl.php?categorie=0"><img src="../view/design/home.jpeg"/></a>
+    <!-- Bouton de retour à la page précédente -->
+    <a href="../controler/afficherListeArticles.ctrl.php?ref=<?=$prevRef?>"><img src="../view/design/flecheG.png"/> </a>
+    <!-- Bouton pour passer à la page suivante -->
+    <a href="../controler/afficherListeArticles.ctrl.php?ref=<?=$nextRef?>"><img src="../view/design/flecheD.png"/></a>
+  </nav>
+      <!-- >Choix du nombre d'article -->
+      <form class="choixNbArticle" action="../controler/afficherListeArticles.ctrl.php?categorie=<?=$catCourante?>" method="POST">
+       <fieldset>
+        <label for="name">Nombre d'article présent sur la page:</label>
+        <input type="number" id="nbArticle" name="nbArticle" value="<?=$_SESSION['nbArticle']?>" size = "2">
+         <input type="submit" value=" Valider " size = "10">
+       </fieldset>
+       <!--Affichage des articles-->
+       <?php foreach ($liste as $key => $value): ?>
+         <?php ComposantsVue::creationUnArticle($value,$chemin); ?>
+       <?php endforeach; ?>
       <footer>
 
       </footer>
