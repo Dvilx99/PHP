@@ -101,8 +101,8 @@
           return $liste[0];
         }
 
-        function getArticlesParCategorie(int $int,int $lim) : array {
-          $req = "SELECT * FROM article WHERE categorie = $int LIMIT $lim";
+        function getArticlesParCategorie(int $int) : array {
+          $req = "SELECT * FROM article WHERE categorie = $int";
           $statement = $this->db->query($req);
           $mesArticles = $statement->fetchAll(PDO::FETCH_CLASS,'article');
           return $mesArticles;
@@ -119,8 +119,8 @@
         function ajoutUtilisateur(string $nom, string $prenom, string $email, string $mdp) {
           $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
           $statement = $this->db->query($req);
-          $existingUser = $statement->fetchAll(PDO::FETCH_ASSOC);
-          if (strcmp($email,$existingUser[0]['email'])==0) {
+          $existingUser = $statement->fetchAll(PDO::FETCH_CLASS,'Utilisateur');
+          if (count($existingUser)!=0) {
             return 0;
           } else {
             $utilisateur = new Utilisateur($nom, $prenom, $email, $mdp);
@@ -184,16 +184,13 @@
           if ($mail == "") {
             return self::$EMAIL_MANQUANT;
           } else {
-            $req = ("SELECT mdp FROM utilisateur WHERE email = '$email' and mdp = '$mdp'");
-            $statement = $this->db->query($req);
-            $existingPw = $statement->fetchAll(PDO::FETCH_ASSOC);
-            if(strcmp($mdp, $existingPw[0]['mdp']) == 0) {
+            $semi_User = $this->getUtilisateur($email);
+            if(password_verify ($mdp , $semi_User->getMdp())) {
               return self::$MEMBRE_EXISTE;
             } else {
               return self::$MDP_MANQUANT;
             }
           }
-
         }
   }
 
