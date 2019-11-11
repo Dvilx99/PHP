@@ -164,13 +164,13 @@
           }
         }
 
-        //renvoie l'utilisarteur qui est associé a l'email
+      /*  //renvoie l'utilisarteur qui est associé a l'email
         function getUtilisateur(string $email) : Utilisateur {
           $req = "SELECT * FROM utilisateur WHERE email = '$email'";
           $statement = $this->db->query($req);
           $monUser = $statement->fetchAll(PDO::FETCH_CLASS,'utilisateur');
           return $monUser[0];
-        }
+        }*/
         //ajoute un Panier a la base de données
         function ajoutPanier($utilisateur, $article) {
           $panier = new Panier($utilisateur, $article);
@@ -212,13 +212,16 @@
           if ($mail == "") {
             return self::$EMAIL_MANQUANT;
           } else {
-            $semi_User = $this->getUtilisateur($email);
-            if(password_verify ($mdp , $semi_User->getMdp())) {
+            $req = ("SELECT mdp FROM utilisateur WHERE email = '$email' and mdp = '$mdp'");
+            $statement = $this->db->query($req);
+            $existingPw = $statement->fetchAll(PDO::FETCH_ASSOC);
+            if(strcmp($mdp, $existingPw[0]['mdp']) == 0) {
               return self::$MEMBRE_EXISTE;
             } else {
               return self::$MDP_MANQUANT;
             }
           }
+
         }
   }
 
