@@ -18,15 +18,19 @@
         function getNom() : string{
           return $this->nom;
         }
+
         function getPrenom() : string {
           return $this->prenom;
         }
+
         function getNomComplet() : string {
           return $this->prenom." ".$this->nom;
         }
-        function getEmail() : string{
-          return $this->$email;
+        
+        function getEmail() : string {
+          return $this->email;
         }
+
         function getMdp() : string {
           return $this->mdp;
         }

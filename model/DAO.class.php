@@ -62,7 +62,7 @@
         // Retourne -1 si $ref est la dernière référence
         function next(int $ref) : int {
             $liste = $this->getN($ref, 2);
-            if ($liste[1] != null) {
+            if (sizeof($liste) > 1) {
               return $liste[1]->getRef();
             } else {
               return -1;
@@ -172,7 +172,7 @@
           return $monUser[0];
         }
         //ajoute un Panier a la base de données
-        function ajoutPanier($utilisateur, $article) {
+        function ajoutPanier(string $utilisateur, string $article) {
           $panier = new Panier($utilisateur, $article);
           $serialized = serialize($panier);
           $stmt = $this->db->prepare("INSERT INTO panier(utilisateur,article) VALUES (:utilisateur, :article)");
@@ -180,18 +180,20 @@
             'utilisateur' => $utilisateur,
             'article' => $article
           ));
-          return 1 ;
+          return 1;
         }
         //donne le Panier de l'utilisateur
-        function getPanier($utilisateur) : array {
-          $req = "SELECT article FROM panier WHERE utilisateur = $utilisateur";
+        function getPanier(Utilisateur $utilisateur) : array {
+          $mail = $utilisateur->getEmail();
+          $req = "SELECT article FROM panier WHERE utilisateur = $mail";
           $statement = $this->db->query($req);
-          $monUser = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          $articles = $statement->fetchAll(PDO::FETCH_CLASS,'article');
           return $articles;
         }
         //Retourne les article que l'utilisateur a reservé
         function getArticleUtilisateur(Utilisateur $user) : array {
-          $req = "SELECT article FROM panier WHERE utilisateur = $user";
+          $mail = $user->getEmail();
+          $req = "SELECT article FROM panier WHERE utilisateur = $mail";
           $statement = $this->db->query($req);
           $mesrefs = $statement->fetchAll(PDO::FETCH_CLASS,'article');
           $mesArticles = array();

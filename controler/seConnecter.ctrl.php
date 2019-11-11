@@ -15,7 +15,6 @@
   else{
     if (count($_POST) == 2) { //Vérifie qu'il y a assez d'éléments envoyés
       $verif = $dao->MembreExistant($_POST['email'],$_POST['mdp']);
-      var_dump($verif);
       if($verif == DAO::$MEMBRE_EXISTE) {//valeurs correct
         //Création des parametres de la session
         ComposantsControler::initSession($_POST['email'],$_POST['mdp']);

@@ -21,12 +21,15 @@
       }
       //Charge la categorie courante que l'utilisateur veut afficher ou met 0 par default,
       //Ou ne fais rien car il n'y a pas d'action sur Categorie
-      if (isset($_GET['nbArticle'])){
-        $_SESSION['nbArticle'] = $_GET['categorie'];
-      }
-      else if (!isset($_SESSION['categorie'])){
-        $_SESSION['categorie'] = 0;
-      }
+      // if (isset($_GET['categorie'])){
+      //   $_SESSION['categorie'] = $_GET['categorie'];
+      // }
+      // else if (!isset($_SESSION['categorie'])){
+      //   $_SESSION['categorie'] = 0;
+      // }
+      // Tout ce code =
+      $_SESSION['categorie'] = $_GET['categorie'] ?? 0;
+      
       //Si la categorie existe prepare le chargement pour celle ci,affichie l'accueil sinon
       if ($_SESSION['categorie'] != 0) {
         $liste = $dao->getArticlesParCategorie($_SESSION['categorie']);
@@ -43,25 +46,29 @@
         }
       }
       // Note la référence du premier et dernier article affiché
-      $firstRef = $liste[0]->getRef();
-      $lastRef = end($liste)->getRef();
 
-      // Calcule la référence qui suit le dernier article
-      $nextRef = $dao->next($lastRef);
-      // Si c'est la fin: reste sur le même article
-      if ($nextRef == -1) {
-        $nextRef = $firstRef;
-      }
-      // Passe le résultat à la vue
-      $view->assign('nextRef',$nextRef);
-      // Calcule la référence qui précède du nombre d'article que l'utilisateur veut afficher l'article courant
-      $prevRef = $dao->prevN($firstRef,$_SESSION['nbArticle']);
-      // Si c'est la fin: reste sur le même article
-      if ($prevRef == -1) {
-        $prevRef = $firstRef;
-      }
-      // Passe le résultat à la vue
-      $view->assign('prevRef',$prevRef);
+      //Je commente ca fait beuger
+      /*if (sizeof($liste)>0) {
+        $firstRef = $liste[0]->getRef();
+        $lastRef = end($liste)->getRef();
+
+        // Calcule la référence qui suit le dernier article
+        $nextRef = $dao->next($lastRef);
+        // Si c'est la fin: reste sur le même article
+        if ($nextRef == -1) {
+          $nextRef = $firstRef;
+        }
+        // Passe le résultat à la vue
+        $view->assign('nextRef',$nextRef);
+        // Calcule la référence qui précède du nombre d'article que l'utilisateur veut afficher l'article courant
+        $prevRef = $dao->prevN($firstRef,$_SESSION['nbArticle']);
+        // Si c'est la fin: reste sur le même article
+        if ($prevRef == -1) {
+          $prevRef = $firstRef;
+        }
+        // Passe le résultat à la vue
+        $view->assign('prevRef',$prevRef);
+      }*/
 
       //Donne le chemin pour récupérer les images a la vue
       $view->assign('chemin',$config['images_path']);
