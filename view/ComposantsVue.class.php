@@ -1,7 +1,7 @@
 <?php
 require_once("../model/DAO.class.php");
 class ComposantsVue{
-  //On a tenter de factorier cette faction, mais
+  //On a tenter de factorier cette fonction, mais
   //Du a leurs nombreuse sous-sous-sous-...-categrorie nous n'avons pas réussi a donner une fonction correcte
   //Nous mettons donc un affichage par agregat qui n'est pas optimisé
   static public function creationHeader(){
