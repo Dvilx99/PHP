@@ -2,7 +2,7 @@
 
     include_once("../framework/view.class.php");
     include_once("../model/DAO.class.php");
-
+    session_start();
     //Declaration Variable + valeur par default
     $dao = new DAO();
     $view = new View();
