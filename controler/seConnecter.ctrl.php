@@ -1,7 +1,7 @@
 <?php
-session_start();
   require_once("../model/DAO.class.php");
   require_once("../framework/view.class.php");
+  require_once("ComposantsControler.class.php");
   $dao = new DAO();
   $vue = new  View();
 
@@ -17,11 +17,8 @@ session_start();
       $verif = $dao->MembreExistant($_POST['email'],$_POST['mdp']);
       if($verif == DAO::$MEMBRE_EXISTE) {//valeurs correct
         //Création des parametres de la session
-        $_SESSION['isConnected'] = true;
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['mdp'] = $_POST['mdp'];
-        $chemin = $_POST['sauvPage'] ?? "../controler/afficherListeArticles.ctrl.php";
-        $vue->display($chemin);
+        ComposantsControler::initSession($_POST['email'],$_POST['mdp']);
+        $vue->display("../controler/afficherListeArticles.ctrl.php");
       } else if ($verif == DAO::$EMAIL_MANQUANT) { // 2 = email inexistant
         $erreur = "Cette adresse mail n'existe pas.";
         $vue->assign('erreur', $erreur);
