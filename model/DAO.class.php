@@ -110,30 +110,42 @@
         }
 
         function getArticlesParCategorie(int $int) : array {
-          $categorie = $this->getCat($int);
-          $req = "SELECT * FROM categorie WHERE pere = $int";
-          $statement = $this->db->query($req);
-          $fils = $statement->fetchAll(PDO::FETCH_ASSOC);
-          var_dump($fils);
+          $categories = array();
+          $categories[] = $this->getCat($int);
+          $test = array();
+          while ($test != $categories) {
+            $test = $categories;
 
-          foreach ($fils as $key => $value) {
-            $int = $value['id'];
+            foreach ($test as $categorie) {
+              $sousCategories = $this->getSousCategorie($categorie->getId());
+
+              foreach ($sousCategories as $sousCategorie) {
+                if (!in_array($sousCategorie, $categories)) {
+                  array_push($categories, $sousCategorie);
+                }
+              }
+
+            }
+          }
+
+          $lesArticles = array();
+          foreach ($categories as $categorie) {
+            $int = $categorie->getId();
             $req = "SELECT * FROM article WHERE categorie = $int";
             $statement = $this->db->query($req);
             $articles = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-            var_dump($articles);
-          }
-          return array();
 
-          /*foreach ($categories as $key => $value) {
-            $req = "SELECT * FROM article WHERE categorie = $value";
-            $statement = $this->db->query($req);
-            $liste[] = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+            foreach ($articles as $article) {
+              if ($article != null) {
+                array_push($lesArticles, $article);
+              }
+            }
+
           }
-          return $liste;*/
+          return $lesArticles;
         }
 
-        function getSousCategorie(Categorie $pere) : array{
+        function getSousCategorie(string $pere) : array{
           $req = "SELECT * FROM categorie WHERE pere=$pere";
           $statement = $this->db->query($req);
           $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
