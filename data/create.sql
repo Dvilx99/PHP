@@ -22,9 +22,7 @@ CREATE TABLE utilisateur (
 	mdp TEXT
 );
 CREATE TABLE panier(
-	utilisateur TEXT,
-	article INTEGER,
-	PRIMARY KEY (utilisateur,article),
-	FOREIGN KEY (utilisateur) REFERENCES Utilisateur (email),
-	FOREIGN KEY (article) REFERENCES Article (ref)
+	email TEXT,
+	ref INTEGER,
+	PRIMARY KEY (email,article),
 );

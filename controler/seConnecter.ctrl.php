@@ -18,6 +18,7 @@
       if($verif == DAO::$MEMBRE_EXISTE) {//valeurs correct
         //Création des parametres de la session
         ComposantsControler::initSession($_POST['email'],$_POST['mdp']);
+        $vue->assign('sessionOuverte', "yes");
         $vue->display("../controler/afficherListeArticles.ctrl.php");
       } else if ($verif == DAO::$EMAIL_MANQUANT) { // 2 = email inexistant
         $erreur = "Cette adresse mail n'existe pas.";

@@ -11,9 +11,7 @@ if (isset($_SESSION['isConnected'])){
   $user = $dao->getUtilisateur($_SESSION['email']);
   $article;
   if (isset($_GET['ref']) && isset($user)){
-    $recupArticle[] = $dao-> getN(intval($_GET['ref']),1);
-    $article = $recupArticle[0];
-    $dao->ajoutPanier($user,$recupArticle[0]);
+    $dao->ajoutPanier($_SESSION['email'],$_GET['ref']);
   }
   else {
     throw new \Exception("Erreur dans le choix de l'article ou vous n'êtes pas connecter", 1);

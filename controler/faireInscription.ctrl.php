@@ -20,6 +20,7 @@
       if($dao->ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdpCrypter)) {
         //Affiche l'accueil et initialise la session
           ComposantsControler::initSession($_POST['email'],$_POST['mdp']);
+          $vue->assign('sessionOuverte', "yes");
           $vue->display("../controler/afficherListeArticles.ctrl.php");
       } else {
         $erreur = "Cette adresse mail a déjà été utilisé";

@@ -1,8 +1,11 @@
 <?php
 
-    include_once("../framework/view.class.php");
-    include_once("../model/DAO.class.php");
-
+    require_once("../framework/view.class.php");
+    require_once("../model/DAO.class.php");
+    //Si la session est d"jà ouverte ne le refait pas
+    if (!isset($sessionOuverte)) {
+      session_start();
+    }
     //Declaration Variable + valeur par default
     $dao = new DAO();
     $view = new View();
@@ -15,9 +18,6 @@
       //Ou ne fais rien car il n'y a pas d'action sur nbArticle
       if (isset($_POST['nbArticle'])){
         $_SESSION['nbArticle'] = $_POST['nbArticle'];
-      }
-      else if (!isset($_SESSION['nbArticle'])){
-        $_SESSION['nbArticle'] = 5;
       }
       //Charge la categorie courante que l'utilisateur veut afficher ou met 0 par default,
       //Ou ne fais rien car il n'y a pas d'action sur Categorie

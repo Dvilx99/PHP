@@ -5,5 +5,6 @@ class ComposantsControler{
   $_SESSION['isConnected'] = true;
   $_SESSION['email'] = $email;
   $_SESSION['mdp'] = $mdp;
+  $_SESSION['nbArticle'] = 5;
   }
 }

@@ -144,13 +144,13 @@
           return $monUser[0];
         }
         //ajoute un Panier a la base de données
-        function ajoutPanier($utilisateur, $article) {
-          $panier = new Panier($utilisateur, $article);
+        function ajoutPanier($email, $ref) {
+          $panier = new Panier($email, $ref);
           $serialized = serialize($panier);
           $stmt = $this->db->prepare("INSERT INTO panier(utilisateur,article) VALUES (:utilisateur, :article)");
           $stmt->execute(array(
-            'utilisateur' => $utilisateur,
-            'article' => $article
+            'utilisateur' => $email,
+            'article' => $ref
           ));
           return 1 ;
         }
@@ -165,7 +165,11 @@
         function getArticleUtilisateur(Utilisateur $user) : array {
           $req = "SELECT article FROM panier WHERE utilisateur = $user";
           $statement = $this->db->query($req);
-          $mesArticles = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          $mesrefs = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          $mesArticles = array();
+          foreach ($mesrefs as $key => $value) {
+            $mesArticles[] = $value;
+          }
           return $mesArticles;
         }
         //Censer etre utiliser pour factoriser ComposantVue/creationHeader mais pas fait
