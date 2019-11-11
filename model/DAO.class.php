@@ -2,8 +2,8 @@
 
     require_once("../model/Categorie.class.php");
     require_once("../model/Article.class.php");
-    require_once("../model/Utilisateur.php");
-
+    require_once("../model/Utilisateur.class.php");
+    require_once("../model/Panier.class.php");
     // Le Data Access Object
     // Il représente la base de donnée
     class DAO {
@@ -92,14 +92,6 @@
             return $liste[0];
         }
 
-        // Acces au n articles à partir de la reférence $ref
-        // Retourne une table d'objets de la classe Article
-        function getNCateg(int $ref,int $n,string $categorie) : array {
-            $req = "SELECT * FROM article WHERE categorie = $categorie AND ref >= $ref LIMIT $n";
-            $statement = $this->db->query($req);
-            $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-            return $liste;
-        }
 
 
         function getArticle(int $ref) : Article {
@@ -155,8 +147,8 @@
         function ajoutUtilisateur(string $nom, string $prenom, string $email, string $mdp) {
           $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
           $statement = $this->db->query($req);
-          $existingUser = $statement->fetchAll(PDO::FETCH_ASSOC);
-          if (strcmp($email,$existingUser[0]['email'])==0) {
+          $existingUser = $statement->fetchAll(PDO::FETCH_CLASS,'Utilisateur');
+          if (count($existingUser)!=0) {
             return 0;
           } else {
             $utilisateur = new Utilisateur($nom, $prenom, $email, $mdp);
@@ -172,6 +164,46 @@
           }
         }
 
+        //renvoie l'utilisarteur qui est associé a l'email
+        function getUtilisateur(string $email) : Utilisateur {
+          $req = "SELECT * FROM utilisateur WHERE email = '$email'";
+          $statement = $this->db->query($req);
+          $monUser = $statement->fetchAll(PDO::FETCH_CLASS,'utilisateur');
+          return $monUser[0];
+        }
+        //ajoute un Panier a la base de données
+        function ajoutPanier($utilisateur, $article) {
+          $panier = new Panier($utilisateur, $article);
+          $serialized = serialize($panier);
+          $stmt = $this->db->prepare("INSERT INTO panier(utilisateur,article) VALUES (:utilisateur, :article)");
+          $stmt->execute(array(
+            'utilisateur' => $utilisateur,
+            'article' => $article
+          ));
+          return 1 ;
+        }
+        //donne le Panier de l'utilisateur
+        function getPanier($utilisateur) : array {
+          $req = "SELECT article FROM panier WHERE utilisateur = $utilisateur";
+          $statement = $this->db->query($req);
+          $monUser = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          return $articles;
+        }
+        //Retourne les article que l'utilisateur a reservé
+        function getArticleUtilisateur(Utilisateur $user) : array {
+          $req = "SELECT article FROM panier WHERE utilisateur = $user";
+          $statement = $this->db->query($req);
+          $mesArticles = $statement->fetchAll(PDO::FETCH_CLASS,'article');
+          return $mesArticles;
+        }
+        //Censer etre utiliser pour factoriser ComposantVue/creationHeader mais pas fait
+        function getAllCategoriePere() : array{
+          $req = "SELECT * FROM categorie WHERE pere = id";
+          $statement = $this->db->query($req);
+          $lesPeres = $statement->fetchAll(PDO::FETCH_CLASS,'categorie');
+          return $lesPeres;
+        }
+
         function MembreExistant(string $email, string $mdp) {
           $req = ("SELECT email FROM utilisateur WHERE email = '$email'");
           $statement = $this->db->query($req);
@@ -180,16 +212,13 @@
           if ($mail == "") {
             return self::$EMAIL_MANQUANT;
           } else {
-            $req = ("SELECT mdp FROM utilisateur WHERE email = '$email' and mdp = '$mdp'");
-            $statement = $this->db->query($req);
-            $existingPw = $statement->fetchAll(PDO::FETCH_ASSOC);
-            if(strcmp($mdp, $existingPw[0]['mdp']) == 0) {
+            $semi_User = $this->getUtilisateur($email);
+            if(password_verify ($mdp , $semi_User->getMdp())) {
               return self::$MEMBRE_EXISTE;
             } else {
               return self::$MDP_MANQUANT;
             }
           }
-
         }
   }
 

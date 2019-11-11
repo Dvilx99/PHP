@@ -6,8 +6,7 @@
         private $prenom;
         private $email;
         private $mdp;
-        private $monPanier;
-
+        
         function __construct(string $nom,string $prenom,string $email,string $mdp) {
           $this->nom = $nom;
           $this->prenom = $prenom;
@@ -30,9 +29,6 @@
         }
         function getMdp() : string {
           return $this->mdp;
-        }
-        function getMonPanier() : array {
-          return $this->monPanier;
         }
     }
 
