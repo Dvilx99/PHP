@@ -102,15 +102,43 @@
         }
 
         function getArticlesParCategorie(int $int) : array {
-          $req = "SELECT * FROM article WHERE categorie = $int";
-          $statement = $this->db->query($req);
-          $mesArticles = $statement->fetchAll(PDO::FETCH_CLASS,'article');
-          return $mesArticles;
+          $categories = array();
+          $categories[] = $this->getCat($int);
+          $test = array();
+          while ($test != $categories) {
+            $test = $categories;
+
+            foreach ($test as $categorie) {
+              $sousCategories = $this->getSousCategorie($categorie->getId());
+
+              foreach ($sousCategories as $sousCategorie) {
+                if (!in_array($sousCategorie, $categories)) {
+                  array_push($categories, $sousCategorie);
+                }
+              }
+
+            }
+          }
+
+          $lesArticles = array();
+          foreach ($categories as $categorie) {
+            $int = $categorie->getId();
+            $req = "SELECT * FROM article WHERE categorie = $int";
+            $statement = $this->db->query($req);
+            $articles = $statement->fetchAll(PDO::FETCH_CLASS, "article");
+
+            foreach ($articles as $article) {
+              if ($article != null) {
+                array_push($lesArticles, $article);
+              }
+            }
+
+          }
+          return $lesArticles;
         }
 
-        function getSousCategorie(Categorie $pere) : array{
-          $idPere = intval($pere->getId());
-          $req = "SELECT * FROM categorie WHERE pere=$idPere and id!=$idPere";
+        function getSousCategorie(string $pere) : array{
+          $req = "SELECT * FROM categorie WHERE pere=$pere";
           $statement = $this->db->query($req);
           $liste = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
           return $liste;
@@ -144,13 +172,13 @@
           return $monUser[0];
         }
         //ajoute un Panier a la base de données
-        function ajoutPanier($email, $ref) {
-          $panier = new Panier($email, $ref);
+        function ajoutPanier($utilisateur, $article) {
+          $panier = new Panier($utilisateur, $article);
           $serialized = serialize($panier);
           $stmt = $this->db->prepare("INSERT INTO panier(utilisateur,article) VALUES (:utilisateur, :article)");
           $stmt->execute(array(
-            'utilisateur' => $email,
-            'article' => $ref
+            'utilisateur' => $utilisateur,
+            'article' => $article
           ));
           return 1 ;
         }
@@ -189,7 +217,7 @@
             return self::$EMAIL_MANQUANT;
           } else {
             $semi_User = $this->getUtilisateur($email);
-            if(password_verify ($mdp , $semi_User->getMdp())) {
+            if(password_verify ($mdp ,$semi_User->getMdp())) {
               return self::$MEMBRE_EXISTE;
             } else {
               return self::$MDP_MANQUANT;

@@ -1,17 +1,17 @@
 <?php
 
 class Panier{
-    private $email; //email referant a l'utilisateur
-    private $ref; //ref referant à l'article
+    private $user;
+    private $article;
 
-    function __construct(string $emaill,int $reff){
-      $this->email = $emaill;
-      $this->ref = $reff;
+    function __construct($utilisateur,$articlee){
+      $this->user = $utilisateur;
+      $this->article = $articlee;
     }
-    function getEmail(): string{
-      return $this->$email;
+    function getUser(): Utilisateur{
+      return $this->user;
     }
-    function getRef(): int{
-      return $this->ref;
+    function getArticle(): Article{
+      return $this->article;
     }
 }

@@ -6,6 +6,7 @@
         private $prenom;
         private $email;
         private $mdp;
+
         /*function __construct(string $nom,string $prenom,string $email,string $mdp) {
           $this->nom = $nom;
           $this->prenom = $prenom;

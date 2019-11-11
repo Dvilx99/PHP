@@ -5,16 +5,17 @@
   $dao = new DAO();
   $vue = new  View();
 
-//Vérifie que les attributs de la session existe
-//Si oui on lance l'acceuil
-//Si non on enregistre les informations pour crée
-//un nouvelle utilisateur et creer une session
+  //Vérifie que les attributs de la session existe
+  //Si oui on lance l'acceuil
+  //Si non on enregistre les informations pour crée
+  //un nouvelle utilisateur et creer une session
   if (isset($_SESSION['isConnected'])){
     $vue->display("../controler/afficherListeArticles.ctrl.php");
   }
   else{
     if (count($_POST) == 2) { //Vérifie qu'il y a assez d'éléments envoyés
       $verif = $dao->MembreExistant($_POST['email'],$_POST['mdp']);
+      var_dump($verif);
       if($verif == DAO::$MEMBRE_EXISTE) {//valeurs correct
         //Création des parametres de la session
         ComposantsControler::initSession($_POST['email'],$_POST['mdp']);

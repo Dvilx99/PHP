@@ -2,7 +2,7 @@
 
     require_once("../framework/view.class.php");
     require_once("../model/DAO.class.php");
-    //Si la session est d"jà ouverte ne le refait pas
+    //Si la session est déjà ouverte ne le refait pas
     if (!isset($sessionOuverte)) {
       session_start();
     }

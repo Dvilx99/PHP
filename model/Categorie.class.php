@@ -18,6 +18,7 @@
           return $this->pere;
         }
 
+        //Sert à rien 
         function getPath() : array {
           $dao = new DAO();
           $tab = array();
