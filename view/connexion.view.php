@@ -28,9 +28,10 @@
                 </div>
                 <input type="password" name="mdp" class="form-control" aria-label="Default" aria-describedby="motDePasse" required>
               </div>
-
+              <?php if (isset($sauvPage)): ?>
+                <input type="hidden" name="sauvPage" value="=<?=$sauvPage?>"></input>
+              <?php endif; ?>
               <p><button type="submit" class="btn btn-dark">Connexion</button></p>
-
             </fieldset>
             <a href="../controler/faireInscription.ctrl.php?PATH_INFO=../view/connexion.view.php"><p>S'inscrire</p></a>
           </form>
