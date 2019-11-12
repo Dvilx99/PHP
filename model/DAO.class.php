@@ -92,8 +92,6 @@
             return $liste[0];
         }
 
-
-
         function getArticle(int $ref) : Article {
           $req = "SELECT * FROM article WHERE ref = $ref";
           $statement = $this->db->query($req);
@@ -201,13 +199,6 @@
             $mesArticles[] = $value;
           }
           return $mesArticles;
-        }
-        //Censer etre utiliser pour factoriser ComposantVue/creationHeader mais pas fait
-        function getAllCategoriePere() : array{
-          $req = "SELECT * FROM categorie WHERE pere = id";
-          $statement = $this->db->query($req);
-          $lesPeres = $statement->fetchAll(PDO::FETCH_CLASS,'categorie');
-          return $lesPeres;
         }
 
         function MembreExistant(string $email, string $mdp) {

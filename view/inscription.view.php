@@ -48,6 +48,7 @@
 
                 <button type="submit" class="btn btn-dark"> S'inscrire</button></p>
             </fieldset>
+            <a href="../view/connexion.view.php"><p>Se connecter</p></a>
           </form>
         </body>
       </html>
