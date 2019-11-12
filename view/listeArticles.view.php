@@ -14,7 +14,7 @@
       <!-- >Choix du nombre d'article -->
       <form class="choixNbArticle" action="../controler/afficherListeArticles.ctrl.php?categorie=<?=$catCourante?>" method="POST">
        <fieldset>
-        <label for="name">Nombre d'article présent sur la page:</label>
+        <label for="name">Nombre d'article présent sur la page :</label>
         <input type="number" id="nbArticle" name="nbArticle" value="<?=$nbArticle?>" size = "2">
          <input type="submit" value=" Valider " size = "10">
        </fieldset>

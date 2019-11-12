@@ -29,7 +29,7 @@
       // }
       // Tout ce code =
       $_SESSION['categorie'] = $_GET['categorie'] ?? 0;
-      
+
       //Si la categorie existe prepare le chargement pour celle ci,affichie l'accueil sinon
       if ($_SESSION['categorie'] != 0) {
         $liste = $dao->getArticlesParCategorie($_SESSION['categorie']);
@@ -47,7 +47,7 @@
       }
       // Note la référence du premier et dernier article affiché
 
-      //Je commente ca fait beuger
+      //Je commente ca marche pas mais du coup quand on choisit une catégorie le nb articles marche plus.
       /*if (sizeof($liste)>0) {
         $firstRef = $liste[0]->getRef();
         $lastRef = end($liste)->getRef();
