@@ -35,15 +35,7 @@
         $liste = $dao->getArticlesParCategorie($_SESSION['categorie']);
       }
       else {
-        //Affiche le nb d'article a partir de ref
-        if (isset($_GET['ref'])){
-          $ref = $_GET['ref'];
-          $liste = $dao->getN(intval($ref),$_SESSION['nbArticle']);
-        }
-        //Affiche le debut s'il n'y a pas de ref
-        else{
-          $liste = $dao->firstN($_SESSION['nbArticle']);
-        }
+        $liste = $dao->firstN($_SESSION['nbArticle']);
       }
       // Note la référence du premier et dernier article affiché
 
