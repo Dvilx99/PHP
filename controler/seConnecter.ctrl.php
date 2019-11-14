@@ -1,12 +1,12 @@
 <?php
   require_once("../model/DAO.class.php");
   require_once("../framework/view.class.php");
-  require_once("ComposantsControler.class.php");
+  require_once("../model/ComposantsControler.class.php");
   $dao = new DAO();
   $vue = new  View();
 
   //Vérifie que les attributs de la session existe
-  //Si oui on lance l'acceuil
+  //Si oui on lance l'accueil
   //Si non on enregistre les informations pour crée
   //un nouvelle utilisateur et creer une session
   if (isset($_SESSION['isConnected'])){
@@ -34,4 +34,5 @@
       $vue->assign('erreur', $erreur);
       $vue->display("../view/connexion.view.php");
     }
+
 }

@@ -9,10 +9,10 @@
     //Declaration Variable + valeur par default
     $dao = new DAO();
     $view = new View();
+    $config = parse_ini_file('../config/config.ini');
     //Si il y une session je continue
     //Sinon j'envoie à la connexion
     if (isset($_SESSION['isConnected'])){
-      $config = parse_ini_file('../config/config.ini');
       $liste = array();
       //Charge le nombre d'article que l'utilisateur veut afficher ou met 5 par default,
       //Ou ne fais rien car il n'y a pas d'action sur nbArticle

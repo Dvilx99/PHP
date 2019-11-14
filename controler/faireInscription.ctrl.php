@@ -5,13 +5,13 @@
   $dao = new DAO();
   $vue = new  View();
 
-  $path = $_GET['PATH_INFO'] ?? "";
+  //$path = $_GET['PATH_INFO'] ?? "";
 
-  if ($path == "../view/connexion.view.php") {
-    $erreur = "";
-    $vue->assign('erreur', $erreur);
-    $vue->display("../view/inscription.view.php");
-  } else {
+  // if ($path == "../view/connexion.view.php") {
+  //   $erreur = "";
+  //   $vue->assign('erreur', $erreur);
+  //   $vue->display("../view/inscription.view.php");
+  // } else {
     if (count($_POST) == 4) { //Vérifie qu'il y a assez d'éléments envoyés
       //Crypte le mdp
       do{
@@ -23,13 +23,12 @@
           $vue->assign('sessionOuverte', "yes");
           $vue->display("../controler/afficherListeArticles.ctrl.php");
       } else {
-        $erreur = "Cette adresse mail a déjà été utilisé";
+        $erreur = "Cette adresse mail a déjà été utilisé.";
         $vue->assign('erreur', $erreur);
         $vue->display("../view/inscription.view.php");
       }
     } else {
-      $erreur = "Il manque des informations pour poursuivre l'inscription";
+      $erreur = "Il manque des informations pour poursuivre l'inscription.";
       $vue->assign('erreur', $erreur);
       $vue->display("../view/inscription.view.php");
     }
-  }

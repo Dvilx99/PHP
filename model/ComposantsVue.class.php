@@ -6,7 +6,8 @@ class ComposantsVue{
   //Nous mettons donc un affichage par agregat qui n'est pas optimisé
   static public function creationHeader(){
     ?>
-      <h1>la FNOC</h1>
+    <header>
+      <h1>La FNOC</h1>
       <div id="menu">
         <ul class="niveau1">
           <li>
@@ -61,7 +62,7 @@ class ComposantsVue{
 
    <?php }
 
-  static public function creationUnArticle(Article $value,string $image_path){
+  static public function creationUnArticle(Article $value, string $image_path){
     ?>
     <article class="">
         <h2><?=$value->getLibelCours()?></h2>
