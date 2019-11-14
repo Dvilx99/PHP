@@ -23,10 +23,6 @@
           return $this->prenom;
         }
 
-        function getNomComplet() : string {
-          return $this->prenom." ".$this->nom;
-        }
-        
         function getEmail() : string {
           return $this->email;
         }
@@ -35,5 +31,3 @@
           return $this->mdp;
         }
     }
-
-?>
