@@ -14,9 +14,7 @@
           <form class="" action="../controler/faireInscription.ctrl.php" method="post">
             <fieldset>
               <h2>Inscrivez-vous</h2>
-              <div class="input-group mb-3">
-                <h3><?=$erreur?></h3>
-              </div>
+              <h3><?=$erreur = $erreur ?? ""?></h3>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="nom">Nom</span>

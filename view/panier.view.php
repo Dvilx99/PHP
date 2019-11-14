@@ -1,4 +1,4 @@
-<?php require_once("../framework/ComposantsVue.class.php"); ?>
+<?php require_once("../model/ComposantsVue.class.php"); ?>
 <html>
   <head>
       <title>La FNOC</title>
@@ -9,16 +9,19 @@
     </head>
 
     <body>
-      <header>
-        <h1>la FNOC</h1>
         <?php ComposantsVue::creationHeader(); ?>
-        <h1>Voici votre panier <?=$user->getNomComplet()?></h1>
-      <form class="" action="../controler/afficherFinCommande.ctrl.php" method="post">
-      <?php
-      foreach($liste as $key => $article)
-          ComposantsVue::creationUnArticle($article,$chemin);
-      }
-      ?>
+        <h2>Voici votre panier <?php echo $user->getNom()." ".$user->getPrenom();?></h2>
+
+      <?php foreach($panier as $key => $article):
+          ComposantsVue::creationUnArticle($article, $image);?>
+          <form class="" action="../controler/modifPanier.ctrl.php" method="get">
+            <input type="hidden" name="action" value= "supprime" >
+            <input type="hidden" name="ref" value= <?=$article->getRef()?>>
+            <button type="submit" value="Supprimer du panier" class="btn btn-primary">Supprimer du panier</button>
+          </form>
+        <?php endforeach; ?>
+        <form class="" action="../view/erreur.view.php">
+      <h3>Prix total : <?=$prixTotal?>€</h3>
       <p><button type="submit" class="btn btn-dark">Procéder au paiement</button></p>
       </form>
       <footer>
