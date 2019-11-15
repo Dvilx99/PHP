@@ -26,5 +26,6 @@
     $view->display("panier.view.php");
   }
   else {
+    $view->assign('sessionOuverte',"yes");
     $view->display('seConnecter.ctrl.php');
   }

@@ -40,5 +40,6 @@
       $view->display('../view/listeArticles.view.php');
 }
 else {
+  $view->assign('sessionOuverte', "yes");
   $view->display('../controler/seConnecter.ctrl.php');
 }

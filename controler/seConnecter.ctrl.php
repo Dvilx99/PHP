@@ -2,9 +2,12 @@
   require_once("../model/DAO.class.php");
   require_once("../framework/view.class.php");
   require_once("ComposantsControler.class.php");
+  if (!isset($sessionOuverte)) {
+    session_start();
+  }
   $dao = new DAO();
   $vue = new  View();
-
+  $vue->assign('sessionOuverte', "yes");
   //Vérifie que les attributs de la session existe
   //Si oui on lance l'accueil
   //Si non on enregistre les informations pour crée
@@ -18,7 +21,7 @@
       if($verif == DAO::$MEMBRE_EXISTE) {//valeurs correct
         //Création des parametres de la session
         ComposantsControler::initSession($_POST['email'],$_POST['mdp']);
-        $vue->assign('sessionOuverte', "yes");
+
         $vue->display("../controler/afficherListeArticles.ctrl.php");
       } else if ($verif == DAO::$EMAIL_MANQUANT) { // 2 = email inexistant
         $erreur = "Cette adresse mail n'existe pas.";

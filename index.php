@@ -1,3 +1,3 @@
 <?php
-header('Location: view/connexion.view.php');
+header('Location: controler/seConnecter.ctrl.php');
 ?>
