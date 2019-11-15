@@ -13,6 +13,7 @@
   //Si non on enregistre les informations pour crée
   //un nouvelle utilisateur et creer une session
   if (isset($_SESSION['isConnected'])){
+    $vue->assign('sessionOuverte', "yes");
     $vue->display("../controler/afficherListeArticles.ctrl.php");
   }
   else{
