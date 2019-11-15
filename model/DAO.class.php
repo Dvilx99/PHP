@@ -140,6 +140,12 @@
       $req = "DELETE FROM panier WHERE utilisateur = '$utilisateur' and article = $article";
       return $this->db->exec($req);
     }
+
+    function retirerPanier(string $utilisateur) {
+      $req = "DELETE FROM panier where utilisateur = '$utilisateur'";
+      return $this->db->exec($req);
+    }
+
     //donne le Panier de l'utilisateur
     function getPanier(string $utilisateur) : array {
       $req = "SELECT * FROM article WHERE ref IN (SELECT article FROM panier WHERE utilisateur = '$utilisateur')";
