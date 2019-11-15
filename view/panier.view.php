@@ -27,8 +27,9 @@
         </article>
 
       <?php endforeach; ?>
-      <form class="" action="../view/erreur.view.php">
+      <form class="" action="../view/finCommande.view.php" method="get">
         <h3>Prix total : <?=$prixTotal?>€</h3>
+        <input type="hidden" name="prixTotal" value=<?=$prixTotal?>>
         <p><button type="submit" class="btn btn-dark">Procéder au paiement</button></p>
       </form>
       <footer>

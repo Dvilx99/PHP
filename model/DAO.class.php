@@ -128,10 +128,10 @@
     function ajoutPanier(string $utilisateur, string $article) {
       //$panier = new Panier($utilisateur, $article);
       //$serialized = serialize($panier);
-      $stmt = $this->db->prepare("INSERT INTO panier(utilisateur,article) VALUES (:utilisateur, :article)");
+      $stmt = $this->db->prepare("INSERT INTO panier(utilisateur, article) VALUES (:utilisateur, :article)");
       $stmt->execute(array(
         'utilisateur' => $utilisateur,
-        'article' => $article
+        'article' => $article,
       ));
       return 1;
     }
@@ -146,6 +146,11 @@
       $statement = $this->db->query($req);
       $articles = $statement->fetchAll(PDO::FETCH_CLASS, 'article');
       return $articles;
+    }
+
+    function retirerPanier(string $utilisateur) {
+      $req = "DELETE FROM panier where utilisateur = '$utilisateur'";
+      return $this->db->exec($req);
     }
 
     function MembreExistant(string $email, string $mdp) {

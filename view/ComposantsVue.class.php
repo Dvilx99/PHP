@@ -15,24 +15,6 @@ class ComposantsVue{
             <a href="../controler/afficherListeArticles.ctrl.php">Accueil</a>
           </li>
           <li>
-            <a href="<?=$chemin?>12">Chasse</a>
-            <ul class="niveau2">
-              <li><a href="<?=$chemin?>13">Vêtements de chasse</a></li>
-              <li><a href="<?=$chemin?>14">Chaussures & bottes</a></li>
-              <li><a href="<?=$chemin?>15">Accessoires</a></li>
-              <li><a href="<?=$chemin?>16">Accessoire pour chien</a></li>
-              <li><a href="<?=$chemin?>17">Munitions, Accessoires de l\'arme</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="<?=$chemin?>18">Echec</a>
-            <ul class="niveau2">
-              <li><a href="<?=$chemin?>19">Pieces</a></li>
-              <li><a href="<?=$chemin?>20">Echiquier</a></li>
-              <li><a href="<?=$chemin?>21">Livres sur les echecs</a></li>
-            </ul>
-          </li>
-          <li>
             <a href="<?=$chemin?>1">Rugby</a>
             <ul class="niveau2">
               <li><a href="<?=$chemin?>2">Ballons et Accessoires</a></li>
@@ -49,6 +31,24 @@ class ComposantsVue{
               <li><a href="<?=$chemin?>9">Raquettes & Bois et revêtements</a></li>
               <li><a href="<?=$chemin?>10">Balles</a></li>
               <li><a href="<?=$chemin?>11">Filets</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="<?=$chemin?>12">Chasse</a>
+            <ul class="niveau2">
+              <li><a href="<?=$chemin?>13">Vêtements de chasse</a></li>
+              <li><a href="<?=$chemin?>14">Chaussures & bottes</a></li>
+              <li><a href="<?=$chemin?>15">Accessoires</a></li>
+              <li><a href="<?=$chemin?>16">Accessoire pour chien</a></li>
+              <li><a href="<?=$chemin?>17">Munitions, Accessoires de l\'arme</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="<?=$chemin?>18">Echec</a>
+            <ul class="niveau2">
+              <li><a href="<?=$chemin?>19">Pieces</a></li>
+              <li><a href="<?=$chemin?>20">Echiquier</a></li>
+              <li><a href="<?=$chemin?>21">Livres sur les echecs</a></li>
             </ul>
           </li>
           <li>
