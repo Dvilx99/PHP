@@ -28,6 +28,7 @@
         $liste = $dao->getArticlesParCategorie($_SESSION['categorie']);
       }
       else {
+        // Note la référence du premier et dernier article affiché
         $liste = $dao->firstN($_SESSION['nbArticle']);
       }
 

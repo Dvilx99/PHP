@@ -23,6 +23,7 @@
     $view->assign('prixTotal', $prixTotal);
     $view->assign('user', $user);
     $view->assign('image', $config['images_path']);
+    $view->assign('message',$message ?? "");
     $view->display("panier.view.php");
   }
   else {

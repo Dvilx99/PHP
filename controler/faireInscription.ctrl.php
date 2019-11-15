@@ -11,7 +11,7 @@
         $mdpCrypter = password_hash ($_POST['mdp'] , PASSWORD_BCRYPT);
       } while(!password_needs_rehash ($_POST['mdp'] , PASSWORD_BCRYPT));
       if($dao->ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdpCrypter)) {
-        //Affiche l'accueil et initialise la session
+          //Affiche l'accueil et initialise la session
           ComposantsControler::initSession($_POST['email'],$_POST['mdp']);
           $vue->assign('sessionOuverte', "yes");
           $vue->display("../controler/afficherListeArticles.ctrl.php");
