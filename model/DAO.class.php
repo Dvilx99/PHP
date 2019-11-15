@@ -27,16 +27,6 @@
         }
     }
 
-    // Accès à toutes les catégories
-    // Retourne une table d'objets de type Categorie
-    function getAllCat() : array {
-        $query = "SELECT * FROM categorie";
-        $statement = $this->db->query($query);
-        $categories = $statement->fetchAll(PDO::FETCH_CLASS, "categorie");
-        return $categories;
-    }
-
-
 
     // Accès aux n premiers articles
     // Cette méthode retourne un tableau contenant les n permier articles de
@@ -46,41 +36,6 @@
         $statement = $this->db->query($req);
         $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
         return $liste;
-    }
-
-    // Acces au n articles à partir de la reférence $ref
-    // Cette méthode retourne un tableau contenant n  articles de
-    // la base sous la forme d'objets de la classe Article.
-    function getN(int $ref,int $n) : array {
-        $req = "SELECT * FROM article WHERE ref >= $ref LIMIT $n";
-        $statement = $this->db->query($req);
-        $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-        return $liste;
-    }
-
-    // Acces à la référence qui suit la référence $ref dans l'ordre des références
-    // Retourne -1 si $ref est la dernière référence
-    function next(int $ref) : int {
-        $liste = $this->getN($ref, 2);
-        if (sizeof($liste) > 1) {
-          return $liste[1]->getRef();
-        } else {
-          return -1;
-        }
-
-    }
-
-    // Acces aux n articles qui précèdent de $n la référence $ref dans l'ordre des références
-    // Retourne -1 si $ref est la première référence
-    function prevN(int $ref,int $n): int {
-        $req = "SELECT * FROM article WHERE ref < $ref ORDER BY ref DESC LIMIT $n";
-        $statement = $this->db->query($req);
-        $liste = $statement->fetchAll(PDO::FETCH_CLASS, "article");
-        if (count($liste) > 1) {
-          return $liste[$n-1]->getRef();
-        } else {
-          return -1;
-        }
     }
 
     // Acces à une catégorie
@@ -180,7 +135,11 @@
       ));
       return 1;
     }
-
+    //Supprime un panier à la base de données
+    function supprimePanier(string $utilisateur, string $article) {
+      $req = "DELETE FROM panier WHERE utilisateur = '$utilisateur' and article = $article";
+      return $this->db->exec($req);
+    }
     //donne le Panier de l'utilisateur
     function getPanier(string $utilisateur) : array {
       $req = "SELECT * FROM article WHERE ref IN (SELECT article FROM panier WHERE utilisateur = '$utilisateur')";
@@ -207,5 +166,3 @@
     }
 
   }
-
-    ?>

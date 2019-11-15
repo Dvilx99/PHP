@@ -5,49 +5,50 @@ class ComposantsVue{
   //Du a leurs nombreuse sous-sous-sous-...-categrorie nous n'avons pas réussi a donner une fonction correcte
   //Nous mettons donc un affichage par agregat qui n'est pas optimisé
   static public function creationHeader(){
+    $chemin = "../controler/afficherListeArticles.ctrl.php?categorie=";
     ?>
     <header>
-      <h1>La FNOC</h1>
+      <img src="../view/design/fnoc.png" alt="">
       <div id="menu">
         <ul class="niveau1">
           <li>
             <a href="../controler/afficherListeArticles.ctrl.php">Accueil</a>
           </li>
           <li>
-            <a href="../controler/afficherListeArticles.ctrl.php?categorie=12">Chasse</a>
+            <a href="<?=$chemin?>12">Chasse</a>
             <ul class="niveau2">
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=13">Vêtements de chasse</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=14">Chaussures & bottes</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=15">Accessoires</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=16">Accessoire pour chien</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=17">Munitions, Accessoires de l\'arme</a></li>
+              <li><a href="<?=$chemin?>13">Vêtements de chasse</a></li>
+              <li><a href="<?=$chemin?>14">Chaussures & bottes</a></li>
+              <li><a href="<?=$chemin?>15">Accessoires</a></li>
+              <li><a href="<?=$chemin?>16">Accessoire pour chien</a></li>
+              <li><a href="<?=$chemin?>17">Munitions, Accessoires de l\'arme</a></li>
             </ul>
           </li>
           <li>
-            <a href="../controler/afficherListeArticles.ctrl.php?categorie=18">Echec</a>
+            <a href="<?=$chemin?>18">Echec</a>
             <ul class="niveau2">
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=19">Pieces</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=20">Echequier</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=21">Livres sur les echecs</a></li>
+              <li><a href="<?=$chemin?>19">Pieces</a></li>
+              <li><a href="<?=$chemin?>20">Echequier</a></li>
+              <li><a href="<?=$chemin?>21">Livres sur les echecs</a></li>
             </ul>
           </li>
           <li>
-            <a href="../controler/afficherListeArticles.ctrl.php?categorie=1">Rugby</a>
+            <a href="<?=$chemin?>1">Rugby</a>
             <ul class="niveau2">
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=2">Ballons et Accessoires</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=3">Vêtements de rugby</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=4">Haut de rugby</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=5">Bas de rugby</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=6">Crampons de rugby</a></li>
+              <li><a href="<?=$chemin?>2">Ballons et Accessoires</a></li>
+              <li><a href="<?=$chemin?>3">Vêtements de rugby</a></li>
+              <li><a href="<?=$chemin?>4">Haut de rugby</a></li>
+              <li><a href="<?=$chemin?>5">Bas de rugby</a></li>
+              <li><a href="<?=$chemin?>6">Crampons de rugby</a></li>
             </ul>
           </li>
           <li>
-            <a href="../controler/afficherListeArticles.ctrl.php?categorie=7">Tennis de table</a>
+            <a href="<?=$chemin?>7">Tennis de table</a>
             <ul class="niveau2">
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=8">Tables et Housses</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=9">Raquettes & Bois et revêtements</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=10">Balles</a></li>
-              <li><a href="../controler/afficherListeArticles.ctrl.php?categorie=11">Filets</a></li>
+              <li><a href="<?=$chemin?>8">Tables et Housses</a></li>
+              <li><a href="<?=$chemin?>9">Raquettes & Bois et revêtements</a></li>
+              <li><a href="<?=$chemin?>10">Balles</a></li>
+              <li><a href="<?=$chemin?>11">Filets</a></li>
             </ul>
           </li>
           <li>

@@ -6,3 +6,16 @@
 6|Chaussure de rugby terrains secs Density 300 FG noir rouge blanc|6|20.00|6.png|Nos concepteurs rugbymen ont développé ces chaussures pour les joueurs recherchant confort, accroche et résistance, 1 à 2 fois par semaine sur terrains secs.
 7|Chaussure de rugby terrains gras 8 crampons Kakari SG Bleu orange|6|70.00|7.png|Nous avons sélectionnée cette chaussure de rugby Adidas, développée pour jouer sur terrain gras, et conçue pour la mêlée et les avants.
 8|Chaussure de rugby terrains secs Skill R500 FG kaki jaune|6|35.00|8.png|Notre équipe de passionnés de rugby a conçu cette chaussure Skill 500 polyvalente pour jouer sur terrains secs jusqu'à 3 fois par semaine.
+9|TABLE DE TENNIS DE TABLE FREE PPT 500|8|280.00|9.png|Conçue par nos pongistes pour jouer au Tennis de Table Free plusieurs fois par mois. Découvrez le ping pong facilement en intérieur comme en extérieur.
+10| HOUSSE DE TABLE DE TENNIS DE TABLE PPC 500 TABLE REPLIÉE|8|35.00|10.png|Nos concepteurs pongistes ont développé cette housse très fonctionnelle pour protéger votre Table de Tennis de Table extérieure des les agressions climatiques.
+11|RAQUETTE DE TENNIS DE TABLE EN CLUB SUPER ALLROUND VARI SPIN|9|70.00|11.png|Conçue pour la pratique INTENSIVE du tennis de table, pour jouer en COMPETITION.
+12|BALLES DE TENNIS DE TABLE TTB 100 1* 4+ X6 BLANCHE|10|1.30|12.png|Vous recherchez une balle plastique, sans celluloïd, solide et résistante ? La TTB 100 sera la partenaire idéale pour vos entraînements.
+13|FILET DE TENNIS DE TABLE ROLLNET SMALL|11|10.00|13.png|Conçu pour jouer au tennis de table free sur n'importe quel support. Retrouvez des sensations fidèles au ping pong grâce sa hauteur adaptée (10 cm).
+14|Veste chasse Silencieuse Imperméable Chaude 900 camouflage FURTIV|13|149.00|14.png|Notre équipe de conception a imaginé cette veste chaude et imperméable pour les chasseurs à l'approche et à l'affut de grand gibier par temps froid.
+15|CHAUSSURES CHASSE TRAQUE SUPERTRACK 900|14|160.00|15.png|La chaussure des traqueurs, résistance, imperméabilité et laçage facile et rapide. Elles vous accompagnent dans les biotopes les plus encombrés.
+16|TREPIED REGLABLE 500 ROTATIF|15|45.00|16.png|Rotatif à 360° et silencieux, il vous permet d'augmenter votre angle de vue sans faire de bruit.
+17|COLLIER GARMIN PRO 550 PLUS AVEC COLLIER DE SUIVI ET DE DRESSAGE TT15F MINI|16|649.00|17.png|Dispositif de suivi et de dressage, simple à utiliser permettant de suivre et dresser jusqu’à 3 chiens (un collier TT15F Mini fourni).
+18|Cartouchière chasse calibre 12 camouflage marron|17|9.90|18.png|Cartouchière calibre 12 désignée en camouflage réaliste conçue pour le transport des cartouches (avec 20 emplacements) lors de vos sorties chasse.
+19|Pièces Échecs - Taille 6 - Nerva - Plastique|19|12.90|19.png|Pièces d'échec en plastique, noir et crème.
+20|Jeu d'échecs pliant magnétique marqueté, 30 cm - Bois Patiné|20|59.95|20.png|Jeu d'échecs magnétique pliant, origine Inde. Marqueterie de sheesham, rangement individuel des pièces à l'intérieur du coffret.
+21|Echecs : Devenez un maître du jeu|21|6.85|21.png|Dernier tome de l'illustre Noël Ramini qui nous confie ses astuces pour devenir maître des échecs.

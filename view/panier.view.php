@@ -11,13 +11,19 @@
     <body>
         <?php ComposantsVue::creationHeader(); ?>
         <h2>Voici votre panier <?php echo $user->getNom()." ".$user->getPrenom();?></h2>
-      <form class="" action="../view/erreur.view.php">
+
       <?php
-      foreach($panier as $key => $article)
-          ComposantsVue::creationUnArticle($article, $image);
-      ?>
-      <h3>Prix total : <?=$prixTotal?>€</h3>
-      <p><button type="submit" class="btn btn-dark">Procéder au paiement</button></p>
+      foreach($panier as $key => $article):
+        ComposantsVue::creationUnArticle($article, $image);?>
+        <form class="" action="../controler/modifPanier.ctrl.php" method="get">
+          <input type="hidden" name="action" value= "supprime" >
+          <input type="hidden" name="ref" value= <?=$article->getRef()?>>
+          <button type="submit" value="Supprimer du panier" class="btn btn-primary">Supprimer du panier</button>
+        </form>
+      <?php endforeach; ?>
+      <form class="" action="../view/erreur.view.php">
+        <h3>Prix total : <?=$prixTotal?>€</h3>
+        <p><button type="submit" class="btn btn-dark">Procéder au paiement</button></p>
       </form>
       <footer>
 

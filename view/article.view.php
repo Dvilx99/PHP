@@ -19,8 +19,9 @@
         <p><strong>Description :</strong> <br> <?=$article->getDescription()?></p>
         <p><strong>Prix : <?=$article->getPrix()?>€</strong> </p>
 
-        <form class="" action="../controler/ajouterAuPanier.ctrl.php?" method="get">
+        <form class="" action="../controler/modifPanier.ctrl.php?" method="get">
           <input type="hidden" name="ref" value= <?=$ref?>>
+          <input type="hidden" name="action" value= "ajout" >
           <button type="submit" value="Ajouter au panier" class="btn btn-primary">Ajouter au panier</button>
         </form>
 

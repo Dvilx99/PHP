@@ -1,7 +1,9 @@
 <?php
   include_once("../framework/view.class.php");
   include_once("../model/DAO.class.php");
-  session_start();
+  if (!isset($sessionOuverte)) {
+    session_start();
+  }
   $dao = new DAO();
   $view = new View();
   $config = parse_ini_file('../config/config.ini');

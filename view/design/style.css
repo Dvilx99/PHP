@@ -5,14 +5,17 @@
 
 body{
   margin:auto;
-  width: 95%;
+  width: 100%;
+  background-color: rgba(255, 255, 120);
 }
 /*------------- Header -------------*/
   header{
     text-align: center;
+    background-color: white;
+    padding-bottom: 25px;
   }
-  header h1{
-    color:#1f45a4;
+  header img{
+    margin-bottom: 20px;
   }
   /*------------- Navbar -------------*/
     #menu ul{
@@ -31,7 +34,7 @@ body{
     #menu li a{
       display: block;
       text-decoration: none;
-      border: 1px solid #fff;
+      border: 2px solid black;
     }
     /*---------- Niveau 1 ----------*/
       #menu .niveau1 > li{
@@ -79,13 +82,15 @@ body{
     text-align: center;
   }
   article{
+    background-color: white;
     width: var(--taille_article);
     height: var(--taille_article);
     display: inline-block;
-    border: 1px solid #1f45a4;
-  	padding: 5px;
+    border: 3px solid black;
+  	padding: 15px;
     margin: 5px 0;
   	vertical-align: top;
+
   }
   article h2:first-child{
       text-align: left;
@@ -112,17 +117,17 @@ body{
   text-align: center;
 }
   .articleSeul{
-    width: calc(var(--taille_article)*3);
-    height: calc(var(--taille_article)*2.5);
+    width: calc(var(--taille_article)*2.5);
+    height: calc(var(--taille_article)*2);
     display: inline-block;
     text-align: center;
   }
   .articleSeul img{
-    width: var(--taille_article);
+    width: calc(var(--taille_article)*0.70);
 
   }
   .articleSeul p{
-    margin: 20px 0;
+    margin: 10px 0;
   }
   .articleSeul > p{
     text-align: left;
@@ -133,3 +138,16 @@ body{
   .articleSeul h2:first-child{
     font-size: 1.5em;
   }
+/*------------- Page d'erreur -------------*/
+.erreur{
+  background-color: white;
+  border: 2px solid red;
+  padding: 15px 0;
+  margin: auto;
+  margin-top: 15px;
+  width: 60%;
+
+}
+.erreur img{
+    width: 50px;
+}
