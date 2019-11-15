@@ -1,35 +1,51 @@
-<?php require_once('ComposantsVue.class.php') ?>
-
 <html>
-  <head>
-      <title>La FNOC</title>
-      <meta charset="UTF-8"/>
-      <meta http-equiv="content-type" content="text/html;" />
-      <meta name="author" content="La FNOC" />
-      <link rel="stylesheet" type="text/css" href="../view/design/style.css" />
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <link rel="stylesheet" type="text/css" href="../view/design/connexion.view.css" media="screen"/>
+      <title>FNOC - Fin commande</title>
     </head>
 
     <body>
-      <?php ComposantsVue::creationHeader() ?>
+      <header>
+        <img src="../view/design/fnoc.png" alt="">
+      </header>
 
-      <p>Vous êtes sur le point d'acheter ces articles :</p>
-      <section>
-      <?php
-        $prixFinal = 0;
-        foreach ($panier as $key => $value):
-      ?>
-      <article class="">
-          <h2><?=$value->getLibelCours()?></h2>
-          <img src="../view/design/imagesArticles/<?=$value->getImage()?>" alt="">
-          <h2> article : <?=$value->getPrix()?>€</h2>
-      </article>
-      <?php
-        $prixFinal += $value->getPrix();
-        endforeach;
-      ?>
-    </section>
-      <p>Total : <?= $prixFinal ?></p>
+      <form class="" action="../controler/finCommande.ctrl.php" method="post">
+        <fieldset>
+          <h3>Montant total de la commande : <?=$_GET['prixTotal']?>€</h3>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="nom">Numéro de carte</span>
+            </div>
+            <input type="text" name="nom" class="form-control" aria-label="numero" aria-describedby="numero" required>
+          </div>
 
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="prenom">Date d'expiration</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="date" name="date" required>
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="email">Nom du porteur de la carte</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="email" name ="nom" required>
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="motDePasse">Code de sécurité</span>
+            </div>
+            <input type="password" class="form-control" aria-label="Default" aria-describedby="code" name="code" required>
+          </div>
+            <button type="submit" class="btn btn-dark">Valider</button></p>
+        </fieldset>
+      </form>
       <footer>
 
       </footer>

@@ -1,4 +1,4 @@
-<?php require_once("../model/ComposantsVue.class.php"); ?>
+<?php require_once("ComposantsVue.class.php"); ?>
 <html>
   <head>
     <title>La FNOC</title>
@@ -19,11 +19,7 @@
         <p><strong>Description :</strong> <br> <?=$article->getDescription()?></p>
         <p><strong>Prix : <?=$article->getPrix()?>€</strong> </p>
 
-        <form class="" action="../controler/modifPanier.ctrl.php?" method="get">
-          <input type="hidden" name="ref" value= <?=$ref?>>
-          <input type="hidden" name="action" value= "ajout" >
-          <button type="submit" value="Ajouter au panier" class="btn btn-primary">Ajouter au panier</button>
-        </form>
+        <?php ComposantsVue::formPourEnvoieModifPanier("ajout","Ajouter un article",$article->getRef());?>
 
       </article>
 
