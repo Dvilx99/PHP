@@ -11,7 +11,7 @@
     $view = new View();
 
     $dao->retirerPanier($_SESSION['email']);
-
+    $view->assign('sessionOuverte', "yes");
     $view->display("../controler/afficherListeArticles.ctrl.php");
 
 ?>

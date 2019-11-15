@@ -5,6 +5,10 @@
   $dao = new DAO();
   $vue = new  View();
 
+  if (!isset($sessionOuverte)) {
+    session_start();
+  }
+
     if (count($_POST) == 4) { //Vérifie qu'il y a assez d'éléments envoyés
       //Crypte le mdp
       do{
