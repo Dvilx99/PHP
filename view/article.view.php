@@ -1,4 +1,4 @@
-<?php require_once("../model/ComposantsVue.class.php"); ?>
+<?php require_once("ComposantsVue.class.php"); ?>
 <html>
   <head>
     <title>La FNOC</title>
