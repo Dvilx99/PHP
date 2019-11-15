@@ -17,5 +17,5 @@
 17|Munitions, Accessoires de l'arme|12
 18|Echec|18
 19|Pieces|18
-20|Echequier|18
+20|Echiquier|18
 21|Livres sur les echecs|18

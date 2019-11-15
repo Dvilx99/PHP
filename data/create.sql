@@ -24,6 +24,7 @@ CREATE TABLE utilisateur (
 CREATE TABLE panier(
 	utilisateur TEXT,
 	article INTEGER,
+	quantite INTEGER,
 	PRIMARY KEY (utilisateur,article),
 	FOREIGN KEY (utilisateur) REFERENCES Utilisateur (email),
 	FOREIGN KEY (article) REFERENCES Article (ref)

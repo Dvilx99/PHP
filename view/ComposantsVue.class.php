@@ -28,7 +28,7 @@ class ComposantsVue{
             <a href="<?=$chemin?>18">Echec</a>
             <ul class="niveau2">
               <li><a href="<?=$chemin?>19">Pieces</a></li>
-              <li><a href="<?=$chemin?>20">Echequier</a></li>
+              <li><a href="<?=$chemin?>20">Echiquier</a></li>
               <li><a href="<?=$chemin?>21">Livres sur les echecs</a></li>
             </ul>
           </li>

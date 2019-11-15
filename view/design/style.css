@@ -141,7 +141,7 @@ body{
 /*------------- Présentation du panier -------------*/
 .panier{
   width: calc(var(--taille_article)*1.25);
-    height: calc(var(--taille_article)*1.25);
+  height: calc(var(--taille_article)*1.25);
 }
 /*------------- Page d'erreur -------------*/
 .erreur{
