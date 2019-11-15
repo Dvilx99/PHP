@@ -17,5 +17,8 @@
         function getPere() : string {
           return $this->pere;
         }
-
+        
   }
+
+
+?>
