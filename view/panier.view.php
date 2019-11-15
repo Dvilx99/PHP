@@ -13,13 +13,19 @@
         <h2>Voici votre panier <?php echo $user->getNom()." ".$user->getPrenom();?></h2>
 
       <?php
-      foreach($panier as $key => $article):
-        ComposantsVue::creationUnArticle($article, $image);?>
-        <form class="" action="../controler/modifPanier.ctrl.php" method="get">
-          <input type="hidden" name="action" value= "supprime" >
-          <input type="hidden" name="ref" value= <?=$article->getRef()?>>
-          <button type="submit" value="Supprimer du panier" class="btn btn-primary">Supprimer du panier</button>
-        </form>
+      foreach($panier as $key => $article): ?>
+        <article class="panier">
+            <h2><?=$article->getLibelCours()?></h2>
+            <a href="../controler/afficherArticle.ctrl.php?ref=<?=$article->getRef()?>">
+              <p><img src="<?=$image?><?=$article->getImage()?>" alt=""></a></p>
+            <h2><?=$article->getPrix()?>€</h2>
+            <form class="" action="../controler/modifPanier.ctrl.php" method="get">
+              <input type="hidden" name="action" value= "supprime" >
+              <input type="hidden" name="ref" value= <?=$article->getRef()?>>
+              <button type="submit" value="Supprimer du panier" class="btn btn-primary">Supprimer du panier</button>
+            </form>
+        </article>
+
       <?php endforeach; ?>
       <form class="" action="../view/erreur.view.php">
         <h3>Prix total : <?=$prixTotal?>€</h3>

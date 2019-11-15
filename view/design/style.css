@@ -138,6 +138,11 @@ body{
   .articleSeul h2:first-child{
     font-size: 1.5em;
   }
+/*------------- Présentation du panier -------------*/
+.panier{
+  width: calc(var(--taille_article)*1.25);
+    height: calc(var(--taille_article)*1.25);
+}
 /*------------- Page d'erreur -------------*/
 .erreur{
   background-color: white;
